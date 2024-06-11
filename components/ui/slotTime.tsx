@@ -15,12 +15,14 @@ type SlotTimeProps = {
   endTime: Time;
   totalTime: string;
   totalTimeCenth: string;
+  checked: boolean;
   onUpdate: (
     id: number,
     startTime: Time,
     endTime: Time,
     totalTime: string,
-    totalTimeCenth: string
+    totalTimeCenth: string,
+    checked: boolean
   ) => void;
   onRemove: (id: number) => void;
 };
@@ -32,12 +34,13 @@ export default function SlotTime({
   totalTimeCenth: initialTotalTimeCenth,
   onUpdate,
   onRemove,
+  checked: initialCheckedState,
 }: SlotTimeProps) {
   const [startTime, setStartTime] = useState<Time>(initialStartTime);
   const [endTime, setEndTime] = useState<Time>(initialEndTime);
   const [totalTime, setTotalTime] = useState(initialTotalTime);
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
-
+  const [checkedState, setCheckedState] = useState(initialCheckedState);
   useEffect(() => {
     setStartTime(initialStartTime);
   }, [initialStartTime]);
@@ -55,8 +58,12 @@ export default function SlotTime({
   }, [initialTotalTimeCenth]);
 
   useEffect(() => {
-    onUpdate(id, startTime, endTime, totalTime, totalTimeCenth);
-  }, [totalTime]);
+    setCheckedState(initialCheckedState);
+  }, [initialCheckedState]);
+
+  useEffect(() => {
+    onUpdate(id, startTime, endTime, totalTime, totalTimeCenth, checkedState);
+  }, [totalTime, checkedState]);
 
   const handleStartTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
@@ -69,6 +76,10 @@ export default function SlotTime({
     setEndTime(newValue);
 
     calculateTotalTime(startTime, newValue);
+  };
+
+  const handleCheckedChange = () => {
+    setCheckedState(!checkedState);
   };
 
   const calculateTotalTime = (start: Time, end: Time) => {
@@ -110,7 +121,10 @@ export default function SlotTime({
       <TableCell>{totalTime}</TableCell>
       <TableCell>{totalTimeCenth}</TableCell>
       <TableCell className="flex items-center">
-        <Checkbox />
+        <Checkbox
+          checked={checkedState}
+          onCheckedChange={handleCheckedChange}
+        />
         <Trash2
           className="cursor-pointer ml-1 mb-[2px]"
           size={20}

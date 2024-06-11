@@ -23,6 +23,7 @@ type SlotData = {
   endTime: Time;
   totalTime: string;
   totalTimeCenth: string;
+  checked: boolean;
 };
 
 export default function TableHours() {
@@ -33,6 +34,7 @@ export default function TableHours() {
       endTime: new Time(0, 0),
       totalTime: "00:00",
       totalTimeCenth: "00.00",
+      checked: true,
     },
   ]);
 
@@ -48,6 +50,7 @@ export default function TableHours() {
         endTime: new Time(0, 0),
         totalTime: "00:00",
         totalTimeCenth: "0.00",
+        checked: true,
       },
     ]);
   };
@@ -61,11 +64,12 @@ export default function TableHours() {
     startTime: Time,
     endTime: Time,
     totalTime: string,
-    totalTimeCenth: string
+    totalTimeCenth: string,
+    checked: boolean
   ) => {
     const newSLots = slots.map((slot) =>
       slot.id === id
-        ? { ...slot, startTime, endTime, totalTime, totalTimeCenth }
+        ? { ...slot, startTime, endTime, totalTime, totalTimeCenth, checked }
         : slot
     );
     setSlots(newSLots);
@@ -120,6 +124,7 @@ export default function TableHours() {
               endTime={slot.endTime}
               totalTime={slot.totalTime}
               totalTimeCenth={slot.totalTimeCenth}
+              checked={slot.checked}
               onUpdate={updateSlot}
               onRemove={removeSlot}
             />
