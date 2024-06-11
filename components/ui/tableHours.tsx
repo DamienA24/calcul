@@ -32,9 +32,12 @@ export default function TableHours() {
       startTime: new Time(0, 0),
       endTime: new Time(0, 0),
       totalTime: "00:00",
-      totalTimeCenth: "0.00",
+      totalTimeCenth: "00.00",
     },
   ]);
+
+  const [totalTime, setTotalTime] = useState("00:00");
+  const [totalTimeCenth, setTotalTimeCenth] = useState("0.00");
 
   const addSlot = () => {
     setSlots([
@@ -60,16 +63,41 @@ export default function TableHours() {
     totalTime: string,
     totalTimeCenth: string
   ) => {
-    setSlots(
-      slots.map((slot) =>
-        slot.id === id
-          ? { ...slot, startTime, endTime, totalTime, totalTimeCenth }
-          : slot
-      )
+    const newSLots = slots.map((slot) =>
+      slot.id === id
+        ? { ...slot, startTime, endTime, totalTime, totalTimeCenth }
+        : slot
     );
+    setSlots(newSLots);
+    calculateTotalTime(newSLots);
   };
 
-  console.log(slots);
+  const calculateTotalTime = (slots: SlotData[]) => {
+    let totalMinutes = 0;
+
+    slots.forEach((slot) => {
+      const [hours, minutes] = slot.totalTime.split(":").map(Number);
+      totalMinutes += hours * 60 + minutes;
+    });
+
+    const totalHours = Math.floor(totalMinutes / 60);
+    const remainingMinutes = totalMinutes % 60;
+    const totalTimesFormatted = `${totalHours
+      .toString()
+      .padStart(2, "0")}:${remainingMinutes.toString().padStart(2, "0")}`;
+
+    const totalMinutesInHundredths = (totalMinutes / 60) * 100;
+    const centhHours = Math.floor(totalMinutesInHundredths / 100);
+    const centhMinutes = totalMinutesInHundredths % 100;
+
+    const totalTimesCenthFormatted = `${centhHours}:${centhMinutes
+      .toFixed(0)
+      .padStart(2, "0")}`;
+
+    setTotalTime(totalTimesFormatted);
+    setTotalTimeCenth(totalTimesCenthFormatted);
+  };
+
   return (
     <div>
       <Table className="w-[500px] mx-auto	">
@@ -105,8 +133,8 @@ export default function TableHours() {
           </TableRow>
           <TableRow>
             <TableCell colSpan={2}>Total</TableCell>
-            <TableCell>25:00</TableCell>
-            <TableCell>25:00</TableCell>
+            <TableCell>{totalTime}</TableCell>
+            <TableCell>{totalTimeCenth}</TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableFooter>
