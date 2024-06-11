@@ -2,8 +2,10 @@
 import { useState } from "react";
 
 import { TableCell, TableRow } from "@/components/ui/table";
-import { Time } from "@internationalized/date";
+import { Checkbox } from "@/components/ui/checkbox";
 import { TimeValue } from "react-aria-components";
+import { Time } from "@internationalized/date";
+import { Trash2 } from "lucide-react";
 
 import Hour from "./time";
 
@@ -71,6 +73,14 @@ export default function SlotTime() {
         .padStart(2, "0")}`}</TableCell>
       <TableCell>
         {`${totalTimeCenth.hours}:${totalTimeCenth.minutes.padStart(2, "0")}`}{" "}
+      </TableCell>
+      <TableCell className="flex items-center">
+        <Checkbox />
+        <Trash2
+          className="cursor-pointer ml-1 mb-[2px]"
+          size={20}
+          color="#fc3535"
+        />
       </TableCell>
     </TableRow>
   );
