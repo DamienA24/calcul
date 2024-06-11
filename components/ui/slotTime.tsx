@@ -30,7 +30,7 @@ export default function SlotTime() {
   };
 
   const calculateTotalTime = (start: Time, end: Time) => {
-    if (!endTime.hour || start.compare(end) > 0) {
+    if (!end.hour || start.compare(end) > 0) {
       setTotalTime({ hours: 0, minutes: 0 });
       setTotalTimeCenth({
         hours: "0",
