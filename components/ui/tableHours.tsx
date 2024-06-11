@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import Hour from "./time";
+import SlotTime from "./slotTime";
 
 export default function TableHours() {
   return (
@@ -24,16 +24,7 @@ export default function TableHours() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell className="font-medium">
-              <Hour />
-            </TableCell>
-            <TableCell>
-              <Hour />
-            </TableCell>
-            <TableCell>00:00</TableCell>
-            <TableCell>00:00</TableCell>
-          </TableRow>
+          <SlotTime />
         </TableBody>
       </Table>
     </div>

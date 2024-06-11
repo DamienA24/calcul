@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import {
   TimeField,
   Label,
@@ -9,20 +7,24 @@ import {
 } from "react-aria-components";
 import { Time } from "@internationalized/date";
 
-export default function Hour() {
-  let [value, setValue] = useState(new Time(undefined, undefined));
-
+export default function Hour({
+  value,
+  onChange,
+}: {
+  value: TimeValue;
+  onChange: Function;
+}) {
   const handleChange = (value: TimeValue) => {
-    console.log(value);
-    const timeValue = new Time(value.hour, value.minute);
-
-    setValue(timeValue);
+    const timeValue = value
+      ? new Time(value.hour, value.minute)
+      : new Time(0, 0);
+    onChange(timeValue);
   };
 
   return (
     <div>
       <TimeField
-        className="w-full "
+        className="w-full"
         hourCycle={24}
         onChange={handleChange}
         value={value}
