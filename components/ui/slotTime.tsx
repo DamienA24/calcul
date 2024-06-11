@@ -30,17 +30,20 @@ export default function SlotTime() {
   };
 
   const calculateTotalTime = (start: Time, end: Time) => {
-    if (!end.hour || start.compare(end) > 0) {
+    let totalMinutes = 0;
+
+    if (start.compare(end) > 0) {
       setTotalTime({ hours: 0, minutes: 0 });
       setTotalTimeCenth({
         hours: "0",
         minutes: "0",
       });
-      return;
+      const totalHours = 24 - (start.hour - end.hour);
+      totalMinutes = totalHours * 60 + (end.minute - start.minute);
+    } else {
+      totalMinutes = (end.hour - start.hour) * 60 + (end.minute - start.minute);
     }
 
-    const totalMinutes =
-      (end.hour - start.hour) * 60 + (end.minute - start.minute);
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
 

@@ -4,6 +4,7 @@ import {
   DateInput,
   DateSegment,
   TimeValue,
+  FieldError,
 } from "react-aria-components";
 import { Time } from "@internationalized/date";
 
@@ -12,7 +13,7 @@ export default function Hour({
   onChange,
 }: {
   value: TimeValue;
-  onChange: Function;
+  onChange: (value: Time) => void;
 }) {
   const handleChange = (value: TimeValue) => {
     const timeValue = value
