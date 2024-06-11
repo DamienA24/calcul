@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import {
   Table,
   TableBody,
@@ -11,8 +15,61 @@ import {
 import { Button } from "@/components/ui/button";
 
 import SlotTime from "./slotTime";
+import { Time } from "@internationalized/date";
+
+type SlotData = {
+  id: number;
+  startTime: Time;
+  endTime: Time;
+  totalTime: string;
+  totalTimeCenth: string;
+};
 
 export default function TableHours() {
+  const [slots, setSlots] = useState<SlotData[]>([
+    {
+      id: Date.now(),
+      startTime: new Time(0, 0),
+      endTime: new Time(0, 0),
+      totalTime: "00:00",
+      totalTimeCenth: "0.00",
+    },
+  ]);
+
+  const addSlot = () => {
+    setSlots([
+      ...slots,
+      {
+        id: Date.now(),
+        startTime: new Time(0, 0),
+        endTime: new Time(0, 0),
+        totalTime: "00:00",
+        totalTimeCenth: "0.00",
+      },
+    ]);
+  };
+
+  const removeSlot = (id: number) => {
+    setSlots(slots.filter((slot) => slot.id !== id));
+  };
+
+  const updateSlot = (
+    id: number,
+    startTime: Time,
+    endTime: Time,
+    totalTime: string,
+    totalTimeCenth: string
+  ) => {
+    setSlots(
+      slots.map((slot) =>
+        slot.id === id
+          ? { ...slot, startTime, endTime, totalTime, totalTimeCenth }
+          : slot
+      )
+    );
+  };
+
+  console.log(slots);
   return (
     <div>
       <Table className="w-[500px] mx-auto	">
@@ -27,12 +84,23 @@ export default function TableHours() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <SlotTime />
+          {slots.map((slot, index) => (
+            <SlotTime
+              key={index}
+              id={slot.id}
+              startTime={slot.startTime}
+              endTime={slot.endTime}
+              totalTime={slot.totalTime}
+              totalTimeCenth={slot.totalTimeCenth}
+              onUpdate={updateSlot}
+              onRemove={removeSlot}
+            />
+          ))}
         </TableBody>
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
             <TableCell colSpan={4}>
-              <Button>Ajouter une ligne</Button>
+              <Button onClick={addSlot}>Ajouter une ligne</Button>
             </TableCell>
           </TableRow>
           <TableRow>
