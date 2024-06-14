@@ -1,89 +1,35 @@
 export default function Footer() {
   const footerNavs = [
     {
-      label: "Resources",
+      label: "Outils",
       items: [
         {
           href: "javascript:void()",
-          name: "contact",
+          name: "calculette heures de travail",
         },
         {
           href: "javascript:void()",
-          name: "Support",
-        },
-        {
-          href: "javascript:void()",
-          name: "Documentation",
-        },
-        {
-          href: "javascript:void()",
-          name: "Pricing",
+          name: "Convertir heures",
         },
       ],
     },
     {
-      label: "About",
+      label: "A propos",
       items: [
         {
           href: "javascript:void()",
-          name: "Terms",
+          name: "Contact",
         },
         {
           href: "javascript:void()",
-          name: "License",
-        },
-        {
-          href: "javascript:void()",
-          name: "Privacy",
-        },
-        {
-          href: "javascript:void()",
-          name: "About US",
-        },
-      ],
-    },
-    {
-      label: "Explore",
-      items: [
-        {
-          href: "javascript:void()",
-          name: "Showcase",
-        },
-        {
-          href: "javascript:void()",
-          name: "Roadmap",
-        },
-        {
-          href: "javascript:void()",
-          name: "Languages",
-        },
-        {
-          href: "javascript:void()",
-          name: "Blog",
-        },
-      ],
-    },
-    {
-      label: "Company",
-      items: [
-        {
-          href: "javascript:void()",
-          name: "Partners",
-        },
-        {
-          href: "javascript:void()",
-          name: "Team",
-        },
-        {
-          href: "javascript:void()",
-          name: "Careers",
+          name: "sitemap",
         },
       ],
     },
   ];
 
   return (
-    <footer className="pt-10 bg-foreground">
+    <footer className="pt-5 bg-foreground">
       <div className="max-w-screen-xl mx-auto px-4 md:px-8">
         <div className="flex-1 mt-16 space-y-6 justify-between sm:flex md:space-y-0">
           {footerNavs.map((item, idx) => (
@@ -108,7 +54,7 @@ export default function Footer() {
           <p className="text-gray-300">
             © 2022 Float UI Inc. All rights reserved.
           </p>
-          <div className="flex items-center gap-x-6 text-gray-400 mt-6">
+          {/* <div className="flex items-center gap-x-6 text-gray-400 mt-6">
             <a href="javascript:void()">
               <svg
                 className="w-6 h-6 hover:text-gray-500 duration-150"
@@ -185,7 +131,7 @@ export default function Footer() {
                 </defs>
               </svg>
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

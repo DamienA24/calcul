@@ -22,12 +22,7 @@ export default function Navbar() {
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
       <a href="/">
-        <img
-          src="https://www.floatui.com/logo-dark.svg"
-          width={120}
-          height={50}
-          alt="Float UI logo"
-        />
+        <img src="/logo.svg" width={120} height={50} alt="Float UI logo" />
       </a>
       <div className="md:hidden">
         <button
