@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Printer } from "lucide-react";
+import { useReactToPrint } from "react-to-print";
 
 import {
   Table,
@@ -15,7 +17,9 @@ import {
 import { Button } from "@/components/ui/button";
 
 import SlotTime from "./slotTime";
+
 import { Time } from "@internationalized/date";
+import PrintableTable from "./printTable";
 
 type SlotData = {
   id: number;
@@ -27,6 +31,7 @@ type SlotData = {
 };
 
 export default function TableHours() {
+  const contentToPrint = useRef(null);
   const [slots, setSlots] = useState<SlotData[]>([
     {
       id: Date.now(),
@@ -37,9 +42,17 @@ export default function TableHours() {
       checked: true,
     },
   ]);
+  const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
 
   const [totalTime, setTotalTime] = useState("00:00");
   const [totalTimeCenth, setTotalTimeCenth] = useState("0.00");
+
+  const printRef = useRef<HTMLDivElement>(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+    documentTitle: "Heurefficace",
+  });
 
   const addSlot = () => {
     setSlots([
@@ -74,6 +87,8 @@ export default function TableHours() {
         ? { ...slot, startTime, endTime, totalTime, totalTimeCenth, checked }
         : slot
     );
+    const slotsToPrint = newSLots.filter((slot) => slot.checked);
+    setSlotsToPrint(slotsToPrint);
     setSlots(newSLots);
     calculateTotalTime(newSLots);
   };
@@ -145,10 +160,25 @@ export default function TableHours() {
             <TableCell colSpan={2}>Total</TableCell>
             <TableCell>{totalTime}</TableCell>
             <TableCell>{totalTimeCenth}</TableCell>
-            <TableCell></TableCell>
+            <TableCell>
+              {" "}
+              <Printer
+                size={20}
+                className="cursor-pointer"
+                onClick={handlePrint}
+              />
+            </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
+      <div style={{ display: "none" }}>
+        <PrintableTable
+          ref={printRef}
+          slotsData={slotsToPrint}
+          totalTime={totalTime}
+          totalTimeCenth={totalTimeCenth}
+        />
+      </div>
     </div>
   );
 }
