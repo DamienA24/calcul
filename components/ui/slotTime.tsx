@@ -16,6 +16,7 @@ type SlotTimeProps = {
   totalTime: string;
   totalTimeCenth: string;
   checked: boolean;
+  indexRow: number;
   onUpdate: (
     id: number,
     startTime: Time,
@@ -35,6 +36,7 @@ export default function SlotTime({
   onUpdate,
   onRemove,
   checked: initialCheckedState,
+  indexRow,
 }: SlotTimeProps) {
   const [startTime, setStartTime] = useState<Time>(initialStartTime);
   const [endTime, setEndTime] = useState<Time>(initialEndTime);

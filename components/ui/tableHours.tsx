@@ -56,7 +56,9 @@ export default function TableHours() {
   };
 
   const removeSlot = (id: number) => {
-    setSlots(slots.filter((slot) => slot.id !== id));
+    const newSlot = slots.filter((slot) => slot.id !== id);
+    setSlots(newSlot);
+    calculateTotalTime(newSlot);
   };
 
   const updateSlot = (
@@ -80,8 +82,10 @@ export default function TableHours() {
     let totalMinutes = 0;
 
     slots.forEach((slot) => {
-      const [hours, minutes] = slot.totalTime.split(":").map(Number);
-      totalMinutes += hours * 60 + minutes;
+      if (slot.checked) {
+        const [hours, minutes] = slot.totalTime.split(":").map(Number);
+        totalMinutes += hours * 60 + minutes;
+      }
     });
 
     const totalHours = Math.floor(totalMinutes / 60);
@@ -105,7 +109,7 @@ export default function TableHours() {
   return (
     <div>
       <Table className="w-[500px] mx-auto	">
-        <TableCaption>A list of your recent invoices.</TableCaption>
+        <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Heure début</TableHead>
@@ -127,6 +131,7 @@ export default function TableHours() {
               checked={slot.checked}
               onUpdate={updateSlot}
               onRemove={removeSlot}
+              indexRow={index}
             />
           ))}
         </TableBody>

@@ -7,8 +7,9 @@ export default function Navbar() {
 
   // Replace javascript:void(0) paths with your paths
   const navigation = [
-    { title: "Calculette", path: "javascript:void(0)" },
+    { title: "Calculette", path: "/calcul-heure" },
     { title: "Convertir", path: "javascript:void(0)" },
+    { title: "Contact", path: "javascript:void(0)" },
   ];
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function Navbar() {
 
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
-      <a href="javascript:void(0)">
+      <a href="/">
         <img
           src="https://www.floatui.com/logo-dark.svg"
           width={120}
