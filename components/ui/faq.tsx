@@ -1,40 +1,38 @@
 export default function Faq() {
   const faqsList = [
     {
-      q: "What are some random questions to ask?",
-      a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question.",
+      q: "Comment puis-je calculer mes heures de travail avec cette calculatrice ?",
+      a: "Vous pouvez facilement calculer vos heures de travail en saisissant l'heure de début et l'heure de fin pour chaque créneau horaire. La calculatrice d'heures de travail additionne automatiquement ces créneaux pour vous donner un total en heures-minutes et en heures-centièmes.",
     },
     {
-      q: "Do you include common questions?",
-      a: "This generator doesn't include most common questions. The thought is that you can come up with common questions on your own so most of the questions in this generator.",
+      q: "Est-ce que je peux convertir des centièmes en heures avec cette calculatrice ?",
+      a: "Oui, vous pouvez convertir des centièmes en heures en utilisant notre calculatrice. Après avoir entré vos heures, le temps total sera affiché en heures-minutes et en heures-centièmes.",
     },
     {
-      q: "Can I use this for 21 questions?",
-      a: "Yes! there are two ways that you can use this question generator depending on what you're after. You can indicate that you want 21 questions generated.",
+      q: "Comment convertir des heures en centièmes avec cet outil ?",
+      a: "Pour convertir des heures en centièmes, entrez simplement vos créneaux horaires dans la calculatrice. Le calcul se fait automatiquement et le résultat est affiché en heures-centièmes.",
     },
     {
-      q: "Are these questions for girls or for boys?",
-      a: "The questions in this generator are gender neutral and can be used to ask either male of females (or any other gender the person identifies with).",
+      q: "Pourquoi devrais-je utiliser une calculatrice d'heures de travail ?",
+      a: "Une calculatrice d'heures de travail vous aide à suivre précisément votre temps de travail, à éviter les erreurs de calcul et à visualiser votre temps en formats heures-minutes et heures-centièmes.",
     },
     {
-      q: "What are some random questions to ask?",
-      a: "That's exactly the reason we created this random question generator. There are hundreds of random questions to choose from so you're able to find the perfect random question to ask friends.",
+      q: "Comment puis-je ajouter plusieurs créneaux horaires ?",
+      a: "Pour ajouter plusieurs créneaux horaires, cliquez sur le bouton 'Ajouter une ligne'. Vous pouvez ensuite saisir les heures de début et de fin pour chaque créneau, et la calculatrice d'heures de travail calculera le total pour vous.",
     },
     {
-      q: "What do you wish you had more talent doing?",
-      a: "If you've been searching for a way to get random questions, you've landed on the correct webpage. We created the Random Question Generator to ask you as many random questions as your heart desires.",
+      q: "La calculatrice peut-elle gérer des heures de travail fractionnées ?",
+      a: "Oui, la calculatrice peut gérer des heures de travail fractionnées en vous permettant d'ajouter plusieurs créneaux horaires et en calculant le total en heures-minutes et en heures-centièmes.",
     },
   ];
 
   return (
     <section className="leading-relaxed  mt-12 mx-auto px-4 md:px-8 bg-background py-12">
       <div className="space-y-3 text-center">
-        <h1 className="text-3xl text-gray-800 font-semibold">
-          Frequently Asked Questions
-        </h1>
+        <h1 className="text-3xl text-gray-800 font-semibold">FAQ</h1>
         <p className="text-gray-600 max-w-lg mx-auto text-lg">
-          Answered all frequently asked questions, Still confused? feel free to
-          contact us.
+          Nous avons répondu à toutes les questions les plus fréquemment posées.
+          Si vous avez encore des doutes, n'hésitez pas à nous contacter.
         </p>
       </div>
       <div className="mt-14 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
