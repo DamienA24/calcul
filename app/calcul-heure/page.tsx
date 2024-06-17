@@ -1,15 +1,5 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import TableHours from "@/components/ui/tableHours";
-import { Printer } from "lucide-react";
 
-import Hour from "@/components/ui/time";
 export default function Calcul() {
   return (
     <div className="flex flex-col items-center p-10 text-black bg-background ">
