@@ -5,11 +5,15 @@ export default function Footer() {
       items: [
         {
           href: "javascript:void()",
-          name: "calculette heures de travail",
+          name: "Calculette heures de travail",
         },
         {
           href: "javascript:void()",
-          name: "Convertir heures",
+          name: "Convertir heures en centièmes",
+        },
+        {
+          href: "javascript:void()",
+          name: "Convertir centièmes en heures",
         },
       ],
     },
@@ -52,7 +56,7 @@ export default function Footer() {
         </div>
         <div className="mt-10 py-10 border-t border-gray-700 items-center justify-between sm:flex">
           <p className="text-gray-300">
-            © 2022 Float UI Inc. All rights reserved.
+            © 2024 CalculHeuresPro Inc. Tout droit réservés.
           </p>
           {/* <div className="flex items-center gap-x-6 text-gray-400 mt-6">
             <a href="javascript:void()">
