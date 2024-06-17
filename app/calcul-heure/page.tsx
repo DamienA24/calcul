@@ -69,6 +69,15 @@ export default function Calcul() {
             heures converties en centièmes.
           </li>
         </ul>
+        <ul className="mt-10">
+          <li className="font-bold">Télécharger vos calculs d'heures :</li>
+          <li>
+            Vous pouvez facilement Télécharger vos heures de travail au format
+            PDF. Cliquez simplement sur l'icône de téléchargement située en bas
+            de la table. Cela vous permet de conserver une copie numérique de
+            vos calculs d'heures de travail.
+          </li>
+        </ul>
         <p className="mt-10">
           Utilisez cette calculatrice d'heures de travail pour simplifier la
           gestion de votre temps et convertir les centièmes en heures de manière
