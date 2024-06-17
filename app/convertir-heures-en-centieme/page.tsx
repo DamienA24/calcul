@@ -1,7 +1,7 @@
 import TableConvertHours from "@/components/ui/tableConvertHours";
 export default function ConvertHours() {
   return (
-    <div className="flex flex-col items-center p-10 text-black bg-background ">
+    <div className="flex flex-col items-center py-10 sm:p-10 text-black bg-background ">
       <div className="w-9/12">
         <h1 className="text-3xl font-bold text-center mb-10">
           Convertir heures en centième
@@ -71,7 +71,7 @@ export default function ConvertHours() {
             numérique de vos conversions d'heures.
           </li>
         </ul>
-        <p className="mt-10">
+        <p className="my-10">
           Utilisez ce convertisseur d'heures en centièmes pour simplifier la
           gestion de votre temps de travail et convertir les heures en centièmes
           de manière précise et efficace.

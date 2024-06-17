@@ -159,7 +159,9 @@ export default function TableConvertCenth() {
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
             <TableCell colSpan={3}>
-              <Button onClick={addSlot}>Ajouter une ligne</Button>
+              <Button onClick={addSlot} className="h-[30px]">
+                Ajouter une ligne
+              </Button>
             </TableCell>
           </TableRow>
           <TableRow>

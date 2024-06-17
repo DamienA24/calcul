@@ -1,8 +1,8 @@
 import TableConvertCenth from "@/components/ui/tableConvertCenth";
 export default function ConvertCenth() {
   return (
-    <div className="flex flex-col items-center p-10 text-black bg-background ">
-      <div className="w-9/12">
+    <div className="flex flex-col items-center py-10 sm:p-10 text-black bg-background ">
+      <div className="w-9/12 ">
         <h1 className="text-3xl font-bold text-center mb-10">
           Convertir centièmes en heures
         </h1>
@@ -22,7 +22,7 @@ export default function ConvertCenth() {
         </p>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 ">
         <TableConvertCenth />
       </div>
 
@@ -76,7 +76,7 @@ export default function ConvertCenth() {
             conserver une copie numérique de vos conversions de centièmes.
           </li>
         </ul>
-        <p className="mt-10">
+        <p className="my-10">
           Utilisez ce convertisseur de centièmes en heures pour simplifier la
           gestion de votre temps de travail et convertir vos centièmes en heures
           de manière précise et efficace.

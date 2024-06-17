@@ -72,7 +72,6 @@ export default function TableConvertHours() {
     const newSlot = slots.filter((slot) => slot.id !== id);
     setSlots(newSlot);
     setSlotsToPrint(newSlot);
-
     calculateTotalTime(newSlot);
   };
 
@@ -159,7 +158,9 @@ export default function TableConvertHours() {
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
             <TableCell colSpan={3}>
-              <Button onClick={addSlot}>Ajouter une ligne</Button>
+              <Button onClick={addSlot} className="h-[30px]">
+                Ajouter une ligne
+              </Button>
             </TableCell>
           </TableRow>
           <TableRow>
