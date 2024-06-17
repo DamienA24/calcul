@@ -20,12 +20,13 @@ type SlotData = {
 interface PrintableTableProps {
   slotsData: SlotData[];
   totalTimeCenth: string;
+  totalTime: string;
 }
 
 const PrintableTableConvertHour = forwardRef<
   HTMLDivElement,
   PrintableTableProps
->(({ slotsData, totalTimeCenth }, ref) => {
+>(({ slotsData, totalTimeCenth, totalTime }, ref) => {
   return (
     <div ref={ref} className="printable p-4">
       <Table className="w-[300px] mx-auto border border-gray-200">
@@ -56,7 +57,7 @@ const PrintableTableConvertHour = forwardRef<
         </TableBody>
         <TableFooter>
           <TableRow className="bg-gray-200 font-bold">
-            <TableCell className="text-center">Heure Totale</TableCell>
+            <TableCell className="text-center">{totalTime}</TableCell>
             <TableCell className="text-center">{totalTimeCenth}</TableCell>
           </TableRow>
         </TableFooter>

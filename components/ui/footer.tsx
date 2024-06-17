@@ -9,7 +9,7 @@ export default function Footer() {
         },
         {
           href: "javascript:void()",
-          name: "Convertir heures en centièmes",
+          name: "Convertir heures en centième",
         },
         {
           href: "javascript:void()",

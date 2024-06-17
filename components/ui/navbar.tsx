@@ -8,7 +8,8 @@ export default function Navbar() {
   // Replace javascript:void(0) paths with your paths
   const navigation = [
     { title: "Calculette", path: "/calcul-heure" },
-    { title: "Convertir", path: "javascript:void(0)" },
+    { title: "Convertir heures", path: "/convertir-heures-en-centieme" },
+    { title: "Convertir centièmes", path: "/convertir-centiemes-en-heures" },
     { title: "Contact", path: "javascript:void(0)" },
   ];
 

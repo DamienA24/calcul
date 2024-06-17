@@ -40,7 +40,7 @@ export default function TableConvertHours() {
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
-
+  const [totalTime, setTotalTime] = useState("00:00");
   const [totalTimeCenth, setTotalTimeCenth] = useState("00:00");
   const [documentType, setDocumentType] = useState<string | null>(null);
   const printRef = useRef<HTMLDivElement>(null);
@@ -71,6 +71,8 @@ export default function TableConvertHours() {
   const removeSlot = (id: number) => {
     const newSlot = slots.filter((slot) => slot.id !== id);
     setSlots(newSlot);
+    setSlotsToPrint(newSlot);
+
     calculateTotalTime(newSlot);
   };
 
@@ -98,6 +100,11 @@ export default function TableConvertHours() {
         totalMinutes += hour * 60 + minute;
       }
     });
+    const totalHours = Math.floor(totalMinutes / 60);
+    const remainingMinutes = totalMinutes % 60;
+    const totalTimesFormatted = `${totalHours
+      .toString()
+      .padStart(2, "0")}:${remainingMinutes.toString().padStart(2, "0")}`;
 
     const totalMinutesInHundredths = (totalMinutes / 60) * 100;
     const centhHours = Math.floor(totalMinutesInHundredths / 100);
@@ -108,6 +115,7 @@ export default function TableConvertHours() {
     }:${centhMinutes.toFixed(0).padStart(2, "0")}`;
 
     setTotalTimeCenth(totalTimesCenthFormatted);
+    setTotalTime(totalTimesFormatted);
   };
 
   const handleDocument = (type: string) => {
@@ -155,7 +163,7 @@ export default function TableConvertHours() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Total</TableCell>
+            <TableCell className="text-center">{totalTime}</TableCell>
             <TableCell>{totalTimeCenth}</TableCell>
             <TableCell className="flex justify-center">
               {" "}
@@ -178,6 +186,7 @@ export default function TableConvertHours() {
           ref={documentType === "print" ? printRef : targetRef}
           slotsData={slotsToPrint}
           totalTimeCenth={totalTimeCenth}
+          totalTime={totalTime}
         />
       </div>
     </div>
