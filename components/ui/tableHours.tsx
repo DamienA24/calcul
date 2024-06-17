@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Printer } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+
+import { Printer, Download } from "lucide-react";
 import { useReactToPrint } from "react-to-print";
+import { usePDF, Margin } from "react-to-pdf";
 
 import {
   Table,
@@ -31,7 +33,6 @@ type SlotData = {
 };
 
 export default function TableHours() {
-  const contentToPrint = useRef(null);
   const [slots, setSlots] = useState<SlotData[]>([
     {
       id: Date.now(),
@@ -46,12 +47,18 @@ export default function TableHours() {
 
   const [totalTime, setTotalTime] = useState("00:00");
   const [totalTimeCenth, setTotalTimeCenth] = useState("0.00");
-
+  const [documentType, setDocumentType] = useState<string | null>(null);
   const printRef = useRef<HTMLDivElement>(null);
 
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: "Heurefficace",
+    documentTitle: "heures-travail",
+  });
+
+  const { toPDF, targetRef } = usePDF({
+    method: "save",
+    filename: "heures-travail.pdf",
+    page: { margin: Margin.MEDIUM },
   });
 
   const addSlot = () => {
@@ -121,6 +128,19 @@ export default function TableHours() {
     setTotalTimeCenth(totalTimesCenthFormatted);
   };
 
+  const handleDocument = (type: string) => {
+    setDocumentType(type);
+  };
+
+  useEffect(() => {
+    if (documentType === "print") {
+      handlePrint();
+    } else if (documentType === "pdf") {
+      toPDF();
+    }
+    setDocumentType(null);
+  }, [documentType]);
+
   return (
     <div>
       <Table className="w-[500px] mx-auto	">
@@ -160,20 +180,25 @@ export default function TableHours() {
             <TableCell colSpan={2}>Total</TableCell>
             <TableCell>{totalTime}</TableCell>
             <TableCell>{totalTimeCenth}</TableCell>
-            <TableCell>
+            <TableCell className="flex">
               {" "}
               <Printer
                 size={20}
                 className="cursor-pointer"
-                onClick={handlePrint}
+                onClick={() => handleDocument("print")}
+              />
+              <Download
+                size={20}
+                className="cursor-pointer ml-1"
+                onClick={() => handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
-      <div style={{ display: "none" }}>
+      <div className="hidden-pdf">
         <PrintableTable
-          ref={printRef}
+          ref={documentType === "print" ? printRef : targetRef}
           slotsData={slotsToPrint}
           totalTime={totalTime}
           totalTimeCenth={totalTimeCenth}

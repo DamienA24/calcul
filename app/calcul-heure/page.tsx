@@ -7,6 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableHours from "@/components/ui/tableHours";
+import { Printer } from "lucide-react";
+
 import Hour from "@/components/ui/time";
 export default function Calcul() {
   return (
@@ -20,10 +22,8 @@ export default function Calcul() {
           efficacement vos heures de travail quotidien. Ajoutez autant de lignes
           que nécessaire pour inclure toutes vos plages horaires.
         </p>
-        <h2 className="text-3xl font-bold text-center my-10">
-          convertir centièmes en heures
-        </h2>
-        <p>
+
+        <p className="mt-5">
           Le temps total en centièmes (heures, centièmes) est calculé en
           convertissant les heures et minutes en centièmes, puis en les
           arrondissant. Notez que le total en centièmes peut différer de la
@@ -67,6 +67,16 @@ export default function Calcul() {
             pour calculer le temps de travail quotidien en additionnant
             automatiquement toutes les plages horaires en format sexagésimal et
             centésimal.
+          </li>
+        </ul>
+        <ul className="mt-10">
+          <li className="font-bold">Imprimer vos calculs d'heures :</li>
+          <li>
+            Vous pouvez facilement imprimer vos heures de travail en utilisant
+            la fonction d'impression intégrée. Cliquez simplement sur l'icône
+            d'impression située en bas de la table. Cela vous permet de garder
+            une trace physique de vos calculs d'heures de travail, avec les
+            heures converties en centièmes.
           </li>
         </ul>
         <p className="mt-10">
