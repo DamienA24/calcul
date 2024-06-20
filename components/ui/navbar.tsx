@@ -10,7 +10,7 @@ export default function Navbar() {
     { title: "Calculette", path: "/calcul-heure" },
     { title: "Convertir heures", path: "/convertir-heures-en-centieme" },
     { title: "Convertir centièmes", path: "/convertir-centiemes-en-heures" },
-    { title: "Contact", path: "javascript:void(0)" },
+    { title: "Contact", path: "/contact" },
   ];
 
   useEffect(() => {
