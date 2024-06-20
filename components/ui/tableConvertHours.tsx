@@ -47,12 +47,12 @@ export default function TableConvertHours() {
 
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: "heures-travail",
+    documentTitle: "heures-converties",
   });
 
   const { toPDF, targetRef } = usePDF({
     method: "save",
-    filename: "heures-travail.pdf",
+    filename: "heures-converties.pdf",
     page: { margin: Margin.MEDIUM },
   });
 

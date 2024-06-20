@@ -52,12 +52,12 @@ export default function TableHours() {
 
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: "heures-travail",
+    documentTitle: "heures",
   });
 
   const { toPDF, targetRef } = usePDF({
     method: "save",
-    filename: "heures-travail.pdf",
+    filename: "heures.pdf",
     page: { margin: Margin.MEDIUM },
   });
 

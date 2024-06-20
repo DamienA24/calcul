@@ -47,12 +47,12 @@ export default function TableConvertCenth() {
 
   const handlePrint = useReactToPrint({
     content: () => printRef.current,
-    documentTitle: "heures-travail",
+    documentTitle: "centiemes-converties",
   });
 
   const { toPDF, targetRef } = usePDF({
     method: "save",
-    filename: "heures-travail.pdf",
+    filename: "centiemes-converties.pdf",
     page: { margin: Margin.MEDIUM },
   });
 
