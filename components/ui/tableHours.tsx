@@ -143,15 +143,15 @@ export default function TableHours() {
 
   return (
     <div>
-      <Table className="w-[500px] mx-auto	">
+      <Table className=" w-[375px] mx-auto	">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Heure début</TableHead>
-            <TableHead className="w-[100px]">Heure fin</TableHead>
-            <TableHead className="w-[100px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[100px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[100px]">Action</TableHead>
+            <TableHead className="w-[75px]">Heure début</TableHead>
+            <TableHead className="w-[75px]">Heure fin</TableHead>
+            <TableHead className="w-[75px]">Heure en hh:mm</TableHead>
+            <TableHead className="w-[75px]">Heure en 1/100</TableHead>
+            <TableHead className="w-[75px]">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
