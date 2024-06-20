@@ -4,15 +4,15 @@ export default function Footer() {
       label: "Outils",
       items: [
         {
-          href: "javascript:void()",
+          href: "/calcul-heure",
           name: "Calculette heures de travail",
         },
         {
-          href: "javascript:void()",
+          href: "/convertir-heures-en-centieme",
           name: "Convertir heures en centième",
         },
         {
-          href: "javascript:void()",
+          href: "convertir-centiemes-en-heures",
           name: "Convertir centièmes en heures",
         },
       ],
@@ -21,12 +21,12 @@ export default function Footer() {
       label: "A propos",
       items: [
         {
-          href: "javascript:void()",
+          href: "/contact",
           name: "Contact",
         },
         {
-          href: "javascript:void()",
-          name: "sitemap",
+          href: "/sitemap.xml",
+          name: "Sitemap",
         },
       ],
     },

@@ -77,6 +77,7 @@ export default function SlotConvertCenth({
     const totalTimesCenthFormatted = `${hours
       .toString()
       .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+
     setTotalTime(totalTimesCenthFormatted);
   };
 
