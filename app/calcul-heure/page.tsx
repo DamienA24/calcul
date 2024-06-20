@@ -1,5 +1,27 @@
+import { Metadata } from "next";
+
 import TableHours from "@/components/ui/tableHours";
 
+export const metadata: Metadata = {
+  title: "Calculatrice d'heures de travail | Calcul-Heures",
+  description:
+    "Utilisez notre calculatrice d'heures de travail pour calculer efficacement vos heures de travail quotidien. Ajoutez autant de lignes que nécessaire pour inclure toutes vos plages horaires.Imprimer, télécharger",
+
+  applicationName: "Calcul heures pro",
+  keywords: [
+    "calculatrice d'heures de travail",
+    "calcul des heures de travail",
+    "compteur d heures",
+    "le volume du temps",
+    "imprimer planning semaine",
+    "convertisseur temps",
+    "centieme heure",
+    "convertir heures en centième",
+    "convertir centièmes en heures",
+  ],
+  creator: "Calcul heures pro Team",
+  publisher: "Calcul heures pro",
+};
 export default function Calcul() {
   return (
     <div className="flex flex-col items-center p-10 text-black bg-background ">

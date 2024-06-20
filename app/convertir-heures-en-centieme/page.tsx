@@ -1,4 +1,23 @@
+import { Metadata } from "next";
+
 import TableConvertHours from "@/components/ui/tableConvertHours";
+
+export const metadata: Metadata = {
+  title: "Convertir Heures en Centièmes | Calculatrice d'heures de travail",
+  description:
+    "Convertissez vos heures en centièmes avec notre outil de conversion. Facilitez la gestion précise de vos heures de travail.",
+  applicationName: "Calcul heures pro",
+  keywords: [
+    "calculatrice d'heures de travail",
+    "convertir les heures en centième",
+    "conversion des heures en centièmes",
+    "conversion heure en centième",
+    "convertisseur temps",
+    "centieme heure",
+  ],
+  creator: "Calcul heures pro Team",
+  publisher: "Calcul heures pro",
+};
 export default function ConvertHours() {
   return (
     <div className="flex flex-col items-center py-10 sm:p-10 text-black bg-background ">
