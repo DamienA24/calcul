@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: "https://www.calcul-heures.com/convertir-heures-en-centiem",
+      url: "https://www.calcul-heures.com/convertir-heures-en-centieme",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
