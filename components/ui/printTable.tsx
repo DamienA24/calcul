@@ -78,4 +78,5 @@ const PrintableTable = forwardRef<HTMLDivElement, PrintableTableProps>(
   }
 );
 
+PrintableTable.displayName = "PrintableTable";
 export default PrintableTable;

@@ -64,4 +64,5 @@ const PrintableTableConvertCenth = forwardRef<
   );
 });
 
+PrintableTableConvertCenth.displayName = "PrintableTableConvertCenth";
 export default PrintableTableConvertCenth;

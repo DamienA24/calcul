@@ -29,9 +29,9 @@ export default function ConvertCenth() {
         </h1>
         <p>
           Utilisez notre convertisseur de centièmes en heures pour transformer
-          facilement et efficacement vos centièmes d'heures en heures complètes.
-          Ajoutez autant de lignes que nécessaire pour inclure toutes vos
-          périodes de temps.
+          facilement et efficacement vos centièmes d&apos;heures en heures
+          complètes. Ajoutez autant de lignes que nécessaire pour inclure toutes
+          vos périodes de temps.
         </p>
 
         <p className="mt-5">
@@ -67,7 +67,7 @@ export default function ConvertCenth() {
         </ul>
         <ul className="mt-10">
           <li className="font-bold">
-            Additionner plusieurs centièmes d'heures :
+            Additionner plusieurs centièmes d&apos;heures :
           </li>
           <li>
             Entrez les centièmes pour chaque créneau. Le convertisseur
@@ -80,10 +80,10 @@ export default function ConvertCenth() {
           <li className="font-bold">Imprimer vos conversions de centièmes :</li>
           <li>
             Vous pouvez facilement imprimer vos centièmes converties en heures
-            minutes en utilisant la fonction d'impression intégrée. Cliquez
-            simplement sur l'icône d'impression située en bas de la table. Cela
-            vous permet de garder une trace physique de vos conversions de
-            centièmes.
+            minutes en utilisant la fonction d&apos;impression intégrée. Cliquez
+            simplement sur l&apos;icône d&apos;impression située en bas de la
+            table. Cela vous permet de garder une trace physique de vos
+            conversions de centièmes.
           </li>
         </ul>
         <ul className="mt-10">
@@ -92,7 +92,7 @@ export default function ConvertCenth() {
           </li>
           <li>
             Vous pouvez également télécharger vos centièmes converties en heures
-            minute au format PDF. Cliquez simplement sur l'icône de
+            minute au format PDF. Cliquez simplement sur l&apos;icône de
             téléchargement située en bas de la table. Cela vous permet de
             conserver une copie numérique de vos conversions de centièmes.
           </li>

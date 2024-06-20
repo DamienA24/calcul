@@ -66,4 +66,5 @@ const PrintableTableConvertHour = forwardRef<
   );
 });
 
+PrintableTableConvertHour.displayName = "PrintableTableConvertHour";
 export default PrintableTableConvertHour;

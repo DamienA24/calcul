@@ -26,7 +26,7 @@ export default function ConvertHours() {
           Convertir heures en centième
         </h1>
         <p>
-          Utilisez notre converter d'heures en centième pour convertir
+          Utilisez notre converter d&apos;heures en centième pour convertir
           efficacement vos heures de travail en centième. Ajoutez autant de
           lignes que nécessaire pour inclure vos différentes heures.
         </p>
@@ -46,7 +46,7 @@ export default function ConvertHours() {
 
       <div className="w-9/12">
         <h1 className="text-3xl font-bold text-center my-10">
-          Fonctionnement du convertisseur d'heures en centièmes
+          Fonctionnement du convertisseur d&apos;heures en centièmes
         </h1>
         <p>
           Ce convertisseur en ligne offre plusieurs fonctionnalités pour
@@ -73,27 +73,32 @@ export default function ConvertHours() {
           </li>
         </ul>
         <ul className="mt-10">
-          <li className="font-bold">Imprimer vos conversions d'heures :</li>
+          <li className="font-bold">
+            Imprimer vos conversions d&apos;heures :
+          </li>
           <li>
             Vous pouvez facilement imprimer vos heures converties en centièmes
-            en utilisant la fonction d'impression intégrée. Cliquez simplement
-            sur l'icône d'impression située en bas de la table. Cela vous permet
-            de garder une trace physique de vos conversions d'heures.
+            en utilisant la fonction d&apos;impression intégrée. Cliquez
+            simplement sur l&apos;icône d&apos;impression située en bas de la
+            table. Cela vous permet de garder une trace physique de vos
+            conversions d&apos;heures.
           </li>
         </ul>
         <ul className="mt-10">
-          <li className="font-bold">Télécharger vos conversions d'heures :</li>
+          <li className="font-bold">
+            Télécharger vos conversions d&apos;heures :
+          </li>
           <li>
             Vous pouvez également télécharger vos heures converties en centièmes
-            au format PDF. Cliquez simplement sur l'icône de téléchargement
+            au format PDF. Cliquez simplement sur l&apos;icône de téléchargement
             située en bas de la table. Cela vous permet de conserver une copie
-            numérique de vos conversions d'heures.
+            numérique de vos conversions d&apos;heures.
           </li>
         </ul>
         <p className="my-10">
-          Utilisez ce convertisseur d'heures en centièmes pour simplifier la
-          gestion de votre temps de travail et convertir les heures en centièmes
-          de manière précise et efficace.
+          Utilisez ce convertisseur d&apos;heures en centièmes pour simplifier
+          la gestion de votre temps de travail et convertir les heures en
+          centièmes de manière précise et efficace.
         </p>
       </div>
     </div>

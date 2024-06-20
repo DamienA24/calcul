@@ -32,7 +32,7 @@ export default function Faq() {
         <h1 className="text-3xl text-gray-800 font-semibold">FAQ</h1>
         <p className="text-gray-600 max-w-lg mx-auto text-lg">
           Nous avons répondu à toutes les questions les plus fréquemment posées.
-          Si vous avez encore des doutes, n'hésitez pas à nous contacter.
+          Si vous avez encore des doutes, n&apos;hésitez pas à nous contacter.
         </p>
       </div>
       <div className="mt-14 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">

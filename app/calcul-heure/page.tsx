@@ -27,10 +27,10 @@ export default function Calcul() {
     <div className="flex flex-col items-center p-10 text-black bg-background ">
       <div className="w-9/12">
         <h1 className="text-3xl font-bold text-center mb-10">
-          Calculatrice d'heures de travail
+          Calculatrice d&apos;heures de travail
         </h1>
         <p>
-          Utilisez notre calculatrice d'heures de travail pour calculer
+          Utilisez notre calculatrice d&apos;heures de travail pour calculer
           efficacement vos heures de travail quotidien. Ajoutez autant de lignes
           que nécessaire pour inclure toutes vos plages horaires.
         </p>
@@ -49,7 +49,7 @@ export default function Calcul() {
 
       <div className="w-9/12">
         <h1 className="text-3xl font-bold text-center my-10">
-          Fonctionnement de la calculatrice d'heures de travail
+          Fonctionnement de la calculatrice d&apos;heures de travail
         </h1>
         <p>
           Cette calculatrice en ligne offre plusieurs fonctionnalités pour gérer
@@ -82,28 +82,28 @@ export default function Calcul() {
           </li>
         </ul>
         <ul className="mt-10">
-          <li className="font-bold">Imprimer vos calculs d'heures :</li>
+          <li className="font-bold">Imprimer vos calculs d&apos;heures :</li>
           <li>
             Vous pouvez facilement imprimer vos heures de travail en utilisant
-            la fonction d'impression intégrée. Cliquez simplement sur l'icône
-            d'impression située en bas de la table. Cela vous permet de garder
-            une trace physique de vos calculs d'heures de travail, avec les
-            heures converties en centièmes.
+            la fonction d&apos;impression intégrée. Cliquez simplement sur
+            l&apos;icône d&apos;impression située en bas de la table. Cela vous
+            permet de garder une trace physique de vos calculs d&apos;heures de
+            travail, avec les heures converties en centièmes.
           </li>
         </ul>
         <ul className="mt-10">
-          <li className="font-bold">Télécharger vos calculs d'heures :</li>
+          <li className="font-bold">Télécharger vos calculs d&apos;heures :</li>
           <li>
             Vous pouvez facilement Télécharger vos heures de travail au format
-            PDF. Cliquez simplement sur l'icône de téléchargement située en bas
-            de la table. Cela vous permet de conserver une copie numérique de
-            vos calculs d'heures de travail.
+            PDF. Cliquez simplement sur l&apos;icône de téléchargement située en
+            bas de la table. Cela vous permet de conserver une copie numérique
+            de vos calculs d&apos;heures de travail.
           </li>
         </ul>
         <p className="mt-10">
-          Utilisez cette calculatrice d'heures de travail pour simplifier la
-          gestion de votre temps et convertir les centièmes en heures de manière
-          précise et efficace.
+          Utilisez cette calculatrice d&apos;heures de travail pour simplifier
+          la gestion de votre temps et convertir les centièmes en heures de
+          manière précise et efficace.
         </p>
       </div>
     </div>

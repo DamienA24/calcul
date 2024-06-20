@@ -45,13 +45,14 @@ const Contact = () => {
         <h1 className="text-3xl font-bold text-center mb-4">Nous Contacter</h1>
         <p className="text-center mb-8">
           Si vous avez des questions, des suggestions ou des préoccupations
-          concernant notre application de conversion d'heures en centièmes,
-          n'hésitez pas à nous contacter. Nous sommes là pour vous aider avec :
+          concernant notre application de conversion d&apos;heures en centièmes,
+          n&apos;hésitez pas à nous contacter. Nous sommes là pour vous aider
+          avec :
         </p>
         <ul className="list-disc list-inside mb-8">
           <li>Problèmes techniques ou bugs</li>
-          <li>Suggestions d'amélioration</li>
-          <li>Questions sur l'utilisation de l'application</li>
+          <li>Suggestions d&apos;amélioration</li>
+          <li>Questions sur l&apos;utilisation de l&apos;application</li>
           <li>Retours généraux et commentaires</li>
         </ul>
         <form className="space-y-6" ref={form} onSubmit={sendEmail}>
