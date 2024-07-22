@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
@@ -30,6 +31,13 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id="b83292ea-9827-4916-8300-f25461199995"
+          />
+        )}
+
         <Navbar />
         {children}
         <Footer />
