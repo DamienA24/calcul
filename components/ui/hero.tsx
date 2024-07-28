@@ -6,9 +6,9 @@ export default function Hero() {
       <section className="relative">
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-14 md:px-8">
           <div className="space-y-5 max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl text-white font-extrabold mx-auto md:text-5xl">
+            <h1 className="text-4xl text-white font-extrabold mx-auto md:text-5xl">
               Calculer vos horaires facilement et gratuitement
-            </h2>
+            </h1>
             <p className="max-w-2xl mx-auto text-gray-400">
               Calculez vos heures de travail facilement. Entrez les heures de
               début et de fin pour chaque plage horaire. Ajoutez autant de

@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import TableConvertCenth from "@/components/ui/tableConvertCenth";
 
 export const metadata: Metadata = {
-  title: "Convertir Centièmes en Heures | Calculatrice d'heures de travail",
+  title: "Convertir Centièmes en Heures",
   description:
     "Convertissez facilement les centièmes en heures avec notre outil de conversion. Simplifiez la gestion de vos heures de travail en centièmes.Imprimer, télécharger",
   applicationName: "Calcul heures pro",

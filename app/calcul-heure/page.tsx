@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import TableHours from "@/components/ui/tableHours";
 
 export const metadata: Metadata = {
-  title: "Calculatrice d'heures de travail | Calcul-Heures",
+  title: "Calculatrice d'heures de travail",
   description:
     "Utilisez notre calculatrice d'heures de travail pour calculer efficacement vos heures de travail quotidien. Ajoutez autant de lignes que nécessaire pour inclure toutes vos plages horaires.Imprimer, télécharger",
 
