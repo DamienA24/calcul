@@ -1,6 +1,7 @@
 export default function StructuredData() {
   const structuredData = {
     "@context": "https://schema.org",
+    "@type": "WebApplication",
     name: "Calcul heures pro",
     url: "https://www.calcul-heures.com",
     description: "Outils de gestion du temps de travail",

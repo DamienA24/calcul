@@ -1,6 +1,7 @@
 export default function StructuredDataHours() {
   const structuredData = {
     "@context": "https://schema.org",
+    "@type": "WebApplication",
     name: "Convertisseur d'heures en centièmes",
     description:
       "Outil en ligne gratuit pour convertir efficacement vos heures de travail en centièmes. Ajoutez plusieurs créneaux horaires, imprimez et téléchargez vos conversions.",
