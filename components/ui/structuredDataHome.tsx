@@ -5,8 +5,8 @@ export default function StructuredData() {
     name: "Calcul heures pro",
     url: "https://www.calcul-heures.com",
     description: "Outils de gestion du temps de travail",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "All",
+    applicationCategory: "Tool",
+    operatingSystem: "Any",
     offers: {
       "@type": "Offer",
       price: "0",
