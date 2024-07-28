@@ -4,9 +4,11 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
-import "./globals.css";
+import StructuredData from "@/components/ui/structuredDataHome";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
+
+import "./globals.css";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -31,6 +33,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <StructuredData />
         {process.env.NODE_ENV === "production" && (
           <Script
             src="https://cloud.umami.is/script.js"

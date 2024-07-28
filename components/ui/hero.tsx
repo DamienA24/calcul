@@ -2,8 +2,8 @@ import Reviews from "./reviews";
 
 export default function Hero() {
   return (
-    <div>
-      <section className="relative">
+    <header>
+      <div className="relative">
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-14 md:px-8">
           <div className="space-y-5 max-w-4xl mx-auto text-center">
             <h1 className="text-4xl text-white font-extrabold mx-auto md:text-5xl">
@@ -17,7 +17,7 @@ export default function Hero() {
             <div className="justify-center items-center gap-x-3 sm:flex">
               <a href="/calcul-heure">
                 <button className="flex items-center justify-center gap-x-2 py-2.5 px-4 mt-3 w-full text-sm text-white font-medium bg-sky-500 hover:bg-sky-400 active:bg-sky-600 duration-150 rounded-lg sm:mt-0 sm:w-auto">
-                  Calculette
+                  Utiliser la calculette
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
@@ -42,8 +42,8 @@ export default function Hero() {
               "linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)",
           }}
         ></div>
-      </section>
+      </div>
       <Reviews />
-    </div>
+    </header>
   );
 }
