@@ -1,7 +1,6 @@
 export default function StructuredDataCenth() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
     name: "Calculatrice d'heures de travail",
     description:
       "Outil en ligne gratuit pour calculer efficacement vos heures de travail quotidien. Additionne plusieurs plages horaires, convertit en format centésimal, permet l'impression et le téléchargement des calculs.",

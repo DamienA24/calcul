@@ -1,7 +1,6 @@
 export default function StructuredDataCenth() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
     name: "Convertisseur de centièmes en heures",
     description:
       "Outil en ligne gratuit pour convertir efficacement vos centièmes d'heures en heures et minutes. Permet l'impression et le téléchargement des conversions.",
