@@ -29,7 +29,7 @@ export default function ConvertHours() {
             Convertir heures en centième
           </h1>
           <p>
-            Utilisez notre converter d&apos;heures en centième pour convertir
+            Utilisez notre converteur d&apos;heures en centième pour convertir
             efficacement vos heures de travail en centième. Ajoutez autant de
             lignes que nécessaire pour inclure vos différentes heures.
           </p>
