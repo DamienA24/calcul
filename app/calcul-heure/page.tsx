@@ -11,13 +11,11 @@ export const metadata: Metadata = {
   keywords: [
     "calculatrice d'heures de travail",
     "calcul des heures de travail",
-    "compteur d heures",
-    "le volume du temps",
-    "imprimer planning semaine",
+    "compteur d'heures",
+    "gestion du temps de travail",
     "convertisseur temps",
-    "centieme heure",
-    "convertir heures en centième",
-    "convertir centièmes en heures",
+    "heures en centièmes",
+    "plages horaires",
   ],
   creator: "Calcul heures pro Team",
   publisher: "Calcul heures pro",
@@ -48,9 +46,9 @@ export default function Calcul() {
       </div>
 
       <div className="w-9/12">
-        <h1 className="text-3xl font-bold text-center my-10">
+        <h2 className="text-3xl font-bold text-center my-10">
           Fonctionnement de la calculatrice d&apos;heures de travail
-        </h1>
+        </h2>
         <p>
           Cette calculatrice en ligne offre plusieurs fonctionnalités pour gérer
           vos heures de travail efficacement :

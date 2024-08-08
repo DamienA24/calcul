@@ -9,13 +9,12 @@ export const metadata: Metadata = {
     "Convertissez facilement les centièmes en heures avec notre outil de conversion. Simplifiez la gestion de vos heures de travail en centièmes.Imprimer, télécharger",
   applicationName: "Calcul heures pro",
   keywords: [
+    "convertir centièmes en heure",
+    "conversion centième en heure",
     "calculatrice d'heures de travail",
-    "convertir centièmes en heures",
-    "conversion centieme en heure",
     "centièmes en minutes",
-    "imprimer planning semaine",
     "convertisseur temps",
-    "centieme heure",
+    "centième heure",
   ],
   creator: "Calcul heures pro Team",
   publisher: "Calcul heures pro",
@@ -31,10 +30,11 @@ export default function ConvertCenth() {
             Convertir centièmes en heures
           </h1>
           <p>
-            Utilisez notre convertisseur de centièmes en heures pour transformer
-            facilement et efficacement vos centièmes d&apos;heures en heures
-            complètes. Ajoutez autant de lignes que nécessaire pour inclure
-            toutes vos périodes de temps.
+            Besoin de convertir vos centièmes en heure ? Notre outil de
+            conversion est la solution idéale. Transformez facilement et
+            efficacement vos centièmes d&apos;heure en heures complètes. Que
+            vous ayez une ou plusieurs périodes à convertir, notre convertisseur
+            s&apos;adapte à vos besoins.
           </p>
 
           <p className="mt-5">
@@ -52,9 +52,9 @@ export default function ConvertCenth() {
         </div>
 
         <div className="w-9/12">
-          <h1 className="text-3xl font-bold text-center my-10">
+          <h2 className="text-3xl font-bold text-center my-10">
             Fonctionnement du convertisseur de centièmes en heures
-          </h1>
+          </h2>
           <p>
             Ce convertisseur en ligne vous permet de convertir vos centièmes en
             heures de manière précise et efficace. Ajoutez autant de lignes que
