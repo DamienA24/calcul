@@ -53,6 +53,21 @@ export default function ConvertCenth() {
 
         <div className="w-9/12">
           <h2 className="text-3xl font-bold text-center my-10">
+            Exemple utilisation du convertisseur de centièmes en heures
+          </h2>
+
+          <iframe
+            src="https://www.youtube.com/embed/QVli5nMMb-E?si=_wZFZNVu36i7EuQn"
+            title="YouTube video player"
+            className="m-auto"
+            width="320"
+            height="240"
+            allowFullScreen
+          />
+        </div>
+
+        <div className="w-9/12">
+          <h2 className="text-3xl font-bold text-center my-10">
             Fonctionnement du convertisseur de centièmes en heures
           </h2>
           <p>

@@ -47,6 +47,21 @@ export default function Calcul() {
 
       <div className="w-9/12">
         <h2 className="text-3xl font-bold text-center my-10">
+          Exemple utilisation de la calculatrice d&apos;heures de travail
+        </h2>
+
+        <iframe
+          src="https://www.youtube.com/embed/eYX_ENIVD6c?si=DkRf9Q4sLjjEVRk1"
+          title="YouTube video player"
+          className="m-auto"
+          width="320"
+          height="240"
+          allowFullScreen
+        />
+      </div>
+
+      <div className="w-9/12">
+        <h2 className="text-3xl font-bold text-center my-10">
           Fonctionnement de la calculatrice d&apos;heures de travail
         </h2>
         <p>

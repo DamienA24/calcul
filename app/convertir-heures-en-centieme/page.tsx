@@ -50,6 +50,21 @@ export default function ConvertHours() {
 
         <div className="w-9/12">
           <h2 className="text-3xl font-bold text-center my-10">
+            Exemple utilisation du convertisseur d&apos;heures en centième
+          </h2>
+
+          <iframe
+            src="https://www.youtube.com/embed/nGxRDw_6OH8?si=ScWNL6cqnZxAiy_o"
+            title="YouTube video player"
+            className="m-auto"
+            width="320"
+            height="240"
+            allowFullScreen
+          />
+        </div>
+
+        <div className="w-9/12">
+          <h2 className="text-3xl font-bold text-center my-10">
             Comment fonctionne notre convertisseur d&apos;heures en centième
           </h2>
           <p>
