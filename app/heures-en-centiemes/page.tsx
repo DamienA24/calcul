@@ -1,4 +1,4 @@
-import Metadata from "next";
+import { Metadata } from "next";
 
 import StructuredDataHours from "@/components/ui/structuredDataHours";
 import ArrayConversion from "@/components/ui/arrayConversion";
@@ -9,9 +9,9 @@ export const metadata: Metadata = {
     "Un tableau de conversion des minutes en centiemes. Imprimer, télécharger le",
   applicationName: "Calcul heures pro",
   keywords: [
-    "heures en centièmes",
-    "convertir heures en centième",
-    "conversion des heures en centièmes",
+    "heures en centiemes",
+    "convertir heures en centieme",
+    "conversion des heures en centiemes",
     "convertisseur temps",
   ],
   creator: "Calcul heures pro Team",
@@ -27,12 +27,14 @@ export default function ConvertHours() {
             Conversion heures en centièmes
           </h1>
           <p className="text-center">
-            Voici une image d'un tableau de conversion des minutes en centièmes.
+            Voici une image d&apos;un tableau de conversion des minutes en
+            centièmes.
           </p>
 
           <p className="">
             Vous pouvez facilement voir les différentes conversions de minutes
-            en centièmes d'un simple coup d'oeil. Imprimer le, telecharger le.
+            en centièmes d&apos;un simple coup d&apos;oeil. Imprimer le,
+            telecharger le.
           </p>
         </div>
 
@@ -45,9 +47,9 @@ export default function ConvertHours() {
             Aller plus loin
           </h2>
           <p className="text-center">
-            Vous avez aussi la possibilité d'utiliser notre{" "}
+            Vous avez aussi la possibilité d&apos;utiliser notre{" "}
             <a href="/convertir-heures-en-centieme" className="underline">
-              convertisseur d'heures en centièmes
+              convertisseur d&apos;heures en centièmes
             </a>{" "}
             pour personnaliser vos besoins.
           </p>

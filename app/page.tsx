@@ -1,4 +1,4 @@
-import Metadata from "next";
+import { Metadata } from "next";
 import Faq from "@/components/ui/faq";
 import Hero from "@/components/ui/hero";
 

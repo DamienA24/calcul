@@ -1,4 +1,4 @@
-import Metadata from "next";
+import { Metadata } from "next";
 import Script from "next/script";
 
 import TableConvertCenth from "@/components/ui/tableConvertCenth";
