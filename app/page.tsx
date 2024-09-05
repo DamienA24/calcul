@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Faq from "@/components/ui/faq";
 import Hero from "@/components/ui/hero";
+import BannerAds from "@/components/ui/bannerAds";
 
 export const metadata: Metadata = {
   title: "Accueil | Calculatrice d'heures de travail",
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col justify-between ">
+      <BannerAds />
       <Hero />
       <Faq />
     </main>

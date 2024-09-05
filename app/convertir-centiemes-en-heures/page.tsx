@@ -25,13 +25,6 @@ export default function ConvertCenth() {
   return (
     <>
       <StructuredDataCenth />
-      <Script
-        id="adsterra-script"
-        async
-        data-cfasync="false"
-        src="//pl24277107.cpmrevenuegate.com/d6f6568aafbe19353e2438fa0cea8c4a/invoke.js"
-      />
-      <div id="container-d6f6568aafbe19353e2438fa0cea8c4a"></div>
 
       <div className="flex flex-col items-center py-10 sm:p-10 text-black bg-background ">
         <div className="w-9/12 ">
