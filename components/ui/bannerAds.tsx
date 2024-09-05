@@ -10,21 +10,20 @@ const BannerAds = (props: HTMLAttributes<HTMLDivElement>) => {
 
   const atOptions = {
     key: "d6f6568aafbe19353e2438fa0cea8c4a",
-    format: "iframe",
+    format: "js",
+    async: true,
     height: 50,
     width: 320,
     params: {},
   };
 
   useEffect(() => {
-    console.log("icic");
     if (isWindow && banner.current && !banner.current.firstChild) {
-      console.log("passe");
-
       const conf = document.createElement("script");
       const script = document.createElement("script");
+      script.async = true;
       script.type = "text/javascript";
-      script.src = `//pl24277107.cpmrevenuegate.com/${atOptions.key}/invoke.js`;
+      script.src = `https://pl24277107.cpmrevenuegate.com/${atOptions.key}/invoke.js`;
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
 
       banner.current.append(conf);
