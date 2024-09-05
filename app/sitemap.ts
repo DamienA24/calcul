@@ -1,4 +1,4 @@
-import { MetadataRoute } from "next";
+import MetadataRoute from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -23,7 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: "https://www.calcul-heures.com/convertir-centiemes-en-heures",
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
+      priority: 1,
+    },
+    {
+      url: "https://www.calcul-heures.com/heures-en-centiemes",
+      lastModified: new Date(),
+      changeFrequency: "daily",
       priority: 1,
     },
     {
