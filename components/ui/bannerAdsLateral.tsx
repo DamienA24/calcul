@@ -2,17 +2,16 @@
 
 import { useEffect, useRef } from "react";
 
-const BannerAds = () => {
+const BannerAdsLateral = () => {
   const banner = useRef<HTMLDivElement>(null);
 
   const isWindow = typeof window !== "undefined";
 
   const atOptions = {
-    key: "d6f6568aafbe19353e2438fa0cea8c4a",
-    format: "js",
-    async: true,
-    height: 50,
-    width: 320,
+    key: "77cca5c2130fa04d2039105f1ebfdff1",
+    format: "iframe",
+    height: 300,
+    width: 160,
     params: {},
   };
 
@@ -20,9 +19,8 @@ const BannerAds = () => {
     if (isWindow && banner.current && !banner.current.firstChild) {
       const conf = document.createElement("script");
       const script = document.createElement("script");
-      script.async = true;
       script.type = "text/javascript";
-      script.src = `https://pl24277107.cpmrevenuegate.com/${atOptions.key}/invoke.js`;
+      script.src = `//www.topcreativeformat.com/${atOptions.key}/invoke.js`;
       conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
 
       banner.current.append(conf);
@@ -32,11 +30,10 @@ const BannerAds = () => {
 
   return (
     <div
+      className="ml-5 border border-gray-200 justify-center items-center text-white text-center"
       ref={banner}
-      id={`container-${atOptions.key}`}
-      className="mx-2 my-5 border border-gray-200 justify-center items-center text-white text-center"
-    />
+    ></div>
   );
 };
 
-export default BannerAds;
+export default BannerAdsLateral;

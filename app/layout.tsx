@@ -5,6 +5,8 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import StructuredData from "@/components/ui/structuredDataHome";
+import BannerAdsFooter from "@/components/ui/bannerAdsFooter";
+import BannerAds from "@/components/ui/bannerAds";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
 
@@ -42,7 +44,9 @@ export default function RootLayout({
         )}
 
         <Navbar />
+        <BannerAds />
         {children}
+        <BannerAdsFooter />
         <Footer />
       </body>
     </html>

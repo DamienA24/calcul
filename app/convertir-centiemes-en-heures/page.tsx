@@ -1,9 +1,8 @@
 import { Metadata } from "next";
-import Script from "next/script";
 
-import TableConvertCenth from "@/components/ui/tableConvertCenth";
 import StructuredDataCenth from "@/components/ui/structuredDataCenth";
-
+import TableConvertCenth from "@/components/ui/tableConvertCenth";
+import BannerAdsLateral from "@/components/ui/bannerAdsLateral";
 export const metadata: Metadata = {
   title: "Convertir Centièmes en Heures",
   description:
@@ -51,6 +50,7 @@ export default function ConvertCenth() {
 
         <div className="mt-10 ">
           <TableConvertCenth />
+          {/* <BannerAdsLateral /> */}
         </div>
 
         <div className="w-9/12">
