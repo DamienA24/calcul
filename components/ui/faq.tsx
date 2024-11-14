@@ -45,7 +45,7 @@ export default function Faq() {
   return (
     <section className="leading-relaxed  mt-12 mx-auto px-4 md:px-8 bg-background py-12">
       <div className="space-y-3 text-center">
-        <h1 className="text-3xl text-gray-800 font-semibold">FAQ</h1>
+        <h2 className="text-3xl text-gray-800 font-semibold">FAQ</h2>
         <p className="text-gray-600 max-w-lg mx-auto text-lg">
           Nous avons répondu à toutes les questions les plus fréquemment posées.
           Si vous avez encore des doutes, n&apos;hésitez pas à nous contacter.
