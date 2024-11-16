@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 import StructuredDataHours from "@/components/ui/structuredDataHours";
 import TableConvertHours from "@/components/ui/tableConvertHours";
@@ -53,14 +55,18 @@ export default function ConvertHours() {
             Exemple utilisation du convertisseur d&apos;heures en centième
           </h2>
 
-          <iframe
-            src="https://www.youtube.com/embed/nGxRDw_6OH8?si=ScWNL6cqnZxAiy_o"
-            title="YouTube video player"
-            className="m-auto"
-            width="320"
-            height="240"
-            allowFullScreen
-          />
+          <Link
+            href="/tutoriel-heures-en-centiemes"
+            className="block text-center"
+          >
+            <div className="video-thumbnail relative">
+              <Image
+                src="https://i3.ytimg.com/vi/nGxRDw_6OH8/maxresdefault.jpg"
+                alt="Voir le tutoriel vidéo"
+              />
+              <div className="play-button-overlay">Voir le tutoriel vidéo</div>
+            </div>
+          </Link>
         </div>
 
         <div className="w-9/12">

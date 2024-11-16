@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 import TableHours from "@/components/ui/tableHours";
 
@@ -50,14 +52,15 @@ export default function Calcul() {
           Exemple utilisation de la calculatrice d&apos;heures de travail
         </h2>
 
-        <iframe
-          src="https://www.youtube.com/embed/eYX_ENIVD6c?si=DkRf9Q4sLjjEVRk1"
-          title="YouTube video player"
-          className="m-auto"
-          width="320"
-          height="240"
-          allowFullScreen
-        />
+        <Link href="/tutoriel-calcul-heure" className="block text-center">
+          <div className="video-thumbnail relative">
+            <Image
+              src="https://i3.ytimg.com/vi/eYX_ENIVD6c/maxresdefault.jpg"
+              alt="Voir le tutoriel vidéo"
+            />
+            <div className="play-button-overlay">Voir le tutoriel vidéo</div>
+          </div>
+        </Link>
       </div>
 
       <div className="w-9/12">

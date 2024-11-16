@@ -1,4 +1,6 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 import StructuredDataCenth from "@/components/ui/structuredDataCenth";
 import TableConvertCenth from "@/components/ui/tableConvertCenth";
@@ -58,14 +60,18 @@ export default function ConvertCenth() {
             Exemple utilisation du convertisseur de centièmes en heures
           </h2>
 
-          <iframe
-            src="https://www.youtube.com/embed/QVli5nMMb-E?si=_wZFZNVu36i7EuQn"
-            title="YouTube video player"
-            className="m-auto"
-            width="320"
-            height="240"
-            allowFullScreen
-          />
+          <Link
+            href="/tutoriel-centiemes-en-heures"
+            className="block text-center"
+          >
+            <div className="video-thumbnail relative">
+              <Image
+                src="https://i3.ytimg.com/vi/QVli5nMMb-E/maxresdefault.jpg"
+                alt="Voir le tutoriel vidéo"
+              />
+              <div className="play-button-overlay">Voir le tutoriel vidéo</div>
+            </div>
+          </Link>
         </div>
 
         <div className="w-9/12">

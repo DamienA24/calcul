@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import StructuredDataHours from "@/components/ui/structuredDataHours";
 import ArrayConversion from "@/components/ui/arrayConversion";
