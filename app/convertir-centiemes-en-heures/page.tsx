@@ -68,8 +68,8 @@ export default function ConvertCenth() {
               <Image
                 src="https://i3.ytimg.com/vi/QVli5nMMb-E/maxresdefault.jpg"
                 alt="Voir le tutoriel vidéo"
-                width={350}
-                height={350}
+                width={1200}
+                height={1200}
                 className="w-full h-auto"
               />
               <div className="play-button-overlay">Voir le tutoriel vidéo</div>
