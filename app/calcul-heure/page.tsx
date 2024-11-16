@@ -57,6 +57,9 @@ export default function Calcul() {
             <Image
               src="https://i3.ytimg.com/vi/eYX_ENIVD6c/maxresdefault.jpg"
               alt="Voir le tutoriel vidéo"
+              width={350}
+              height={350}
+              className="w-full h-auto"
             />
             <div className="play-button-overlay">Voir le tutoriel vidéo</div>
           </div>

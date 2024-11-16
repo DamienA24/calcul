@@ -63,6 +63,9 @@ export default function ConvertHours() {
               <Image
                 src="https://i3.ytimg.com/vi/nGxRDw_6OH8/maxresdefault.jpg"
                 alt="Voir le tutoriel vidéo"
+                width={350}
+                height={350}
+                className="w-full h-auto"
               />
               <div className="play-button-overlay">Voir le tutoriel vidéo</div>
             </div>
