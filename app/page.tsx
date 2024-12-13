@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+
+import StructuredData from "@/components/ui/structuredDataHome";
 import Faq from "@/components/ui/faq";
 import Hero from "@/components/ui/hero";
 
@@ -20,6 +22,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col justify-between ">
+      <StructuredData />
       <Hero />
       <Faq />
     </main>

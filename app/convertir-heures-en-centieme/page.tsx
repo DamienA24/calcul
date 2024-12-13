@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   creator: "Calcul heures pro Team",
   publisher: "Calcul heures pro",
 };
+
 export default function ConvertHours() {
   return (
     <>

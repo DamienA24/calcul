@@ -4,7 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 
 import { cn } from "@/lib/utils";
 
-import StructuredData from "@/components/ui/structuredDataHome";
+import StructuredData from "@/components/ui/structuredDataLayout";
 import BannerAdsFooter from "@/components/ui/bannerAdsFooter";
 import BannerAds from "@/components/ui/bannerAds";
 import Navbar from "@/components/ui/navbar";
