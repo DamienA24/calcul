@@ -63,7 +63,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         thumbnail_loc: `https://i3.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
         player_loc: `https://www.youtube.com/embed/${videoId}`,
         publication_date: new Date().toISOString(),
-        duration: "PT40S",
         content_loc: `https://www.youtube.com/watch?v=${videoId}`,
       },
     ],
