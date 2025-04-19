@@ -3,36 +3,22 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Printer, Download } from "lucide-react";
-import { useReactToPrint } from "react-to-print";
 import jsPDF from "jspdf";
+import { printImage } from "../../utils/printUtils";
 
 export default function ArrayConversion() {
   const [documentType, setDocumentType] = useState<string | null>(null);
   const printRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  const handlePrint = useReactToPrint({
-    content: () => printRef.current,
-    documentTitle: "heures",
-    pageStyle: `
-      @page {
-        size: auto;
-        margin: 20mm;
-      }
-      @media print {
-        body {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-        }
-      }
-    `,
-  });
+  // Utiliser l'utilitaire d'impression
+  const handlePrint = () => {
+    printImage(
+      "/arrayConversion.svg",
+      "Tableau de conversion des heures",
+      "Tableau de conversion des heures en centièmes"
+    );
+  };
 
   const handleDownloadPDF = () => {
     if (imageRef.current) {
@@ -97,19 +83,19 @@ export default function ArrayConversion() {
         <Printer
           size={30}
           className="cursor-pointer mr-2"
-          onClick={() => handleDocument("print")}
+          onClick={() => handlePrint()}
         />
         <Download
           size={30}
           className="cursor-pointer"
-          onClick={() => handleDocument("pdf")}
+          onClick={() => handleDownloadPDF()}
         />
       </div>
       <div ref={printRef} className="flex justify-center">
         <div className="max-w-full">
           <Image
             ref={imageRef}
-            src="/conversionNext.svg"
+            src="/arrayConversion.svg"
             width={600}
             height={600}
             alt="Tableau de conversion des heures en centièmes"
