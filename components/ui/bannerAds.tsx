@@ -2,38 +2,48 @@
 
 import { useEffect, useRef } from "react";
 
+// Déclaration pour TypeScript
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 const BannerAds = () => {
-  const banner = useRef<HTMLDivElement>(null);
-
-  const isWindow = typeof window !== "undefined";
-
-  const atOptions = {
-    key: "d6f6568aafbe19353e2438fa0cea8c4a",
-    format: "js",
-    async: true,
-    height: 50,
-    width: 320,
-    params: {},
-  };
+  const adContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isWindow && banner.current && !banner.current.firstChild) {
-      const conf = document.createElement("script");
-      const script = document.createElement("script");
-      script.async = true;
-      script.type = "text/javascript";
-      script.src = `https://pl24277107.cpmrevenuegate.com/${atOptions.key}/invoke.js`;
-      conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
-
-      banner.current.append(conf);
-      banner.current.append(script);
+    // Only run on client side
+    if (typeof window === "undefined" || !adContainer.current) return;
+    
+    // Clear previous ad if any
+    if (adContainer.current.firstChild) {
+      adContainer.current.innerHTML = "";
     }
-  }, [banner, isWindow]);
+
+    // Create an ins element (required by AdSense)
+    const adElement = document.createElement("ins");
+    adElement.className = "adsbygoogle";
+    adElement.style.display = "block";
+    adElement.setAttribute("data-ad-client", "ca-pub-1608938195475222");
+    adElement.setAttribute("data-ad-slot", "VOTRE_AD_SLOT"); // Remplacez par votre ad slot
+    adElement.setAttribute("data-ad-format", "auto");
+    adElement.setAttribute("data-full-width-responsive", "true");
+    
+    // Append the ins element to the container
+    adContainer.current.appendChild(adElement);
+    
+    // Initialize ad
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.error('AdSense error:', error);
+    }
+  }, []);
 
   return (
     <div
-      ref={banner}
-      id={`container-${atOptions.key}`}
+      ref={adContainer}
       className="mx-2 my-5 border border-gray-200 justify-center items-center text-white text-center"
     />
   );

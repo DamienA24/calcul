@@ -2,37 +2,50 @@
 
 import { useEffect, useRef } from "react";
 
+// Déclaration pour TypeScript
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 const BannerAdsFooter = () => {
-  const banner = useRef<HTMLDivElement>(null);
-
-  const isWindow = typeof window !== "undefined";
-
-  const atOptions = {
-    key: "695f8c7cbdcae0dc66d43886336144a2",
-    format: "iframe",
-    height: 50,
-    width: 320,
-    params: {},
-  };
+  const adContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isWindow && banner.current && !banner.current.firstChild) {
-      const conf = document.createElement("script");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `//www.topcreativeformat.com/${atOptions.key}/invoke.js`;
-      conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
-
-      banner.current.append(conf);
-      banner.current.append(script);
+    // Only run on client side
+    if (typeof window === "undefined" || !adContainer.current) return;
+    
+    // Clear previous ad if any
+    if (adContainer.current.firstChild) {
+      adContainer.current.innerHTML = "";
     }
-  }, [banner, isWindow]);
+
+    // Create an ins element (required by AdSense)
+    const adElement = document.createElement("ins");
+    adElement.className = "adsbygoogle";
+    adElement.style.display = "block";
+    adElement.setAttribute("data-ad-client", "ca-pub-1608938195475222");
+    adElement.setAttribute("data-ad-slot", "VOTRE_AD_SLOT_FOOTER"); // Remplacez par votre ad slot pour le footer
+    adElement.setAttribute("data-ad-format", "auto");
+    adElement.setAttribute("data-full-width-responsive", "true");
+    
+    // Append the ins element to the container
+    adContainer.current.appendChild(adElement);
+    
+    // Initialize ad
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.error('AdSense error:', error);
+    }
+  }, []);
 
   return (
     <div
+      ref={adContainer}
       className="mx-2 my-5 border border-gray-200 justify-center items-center text-white text-center"
-      ref={banner}
-    ></div>
+    />
   );
 };
 
