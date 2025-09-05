@@ -128,7 +128,7 @@ export default function TableConvertHours() {
       toPDF();
     }
     setDocumentType(null);
-  }, [documentType]);
+  }, [documentType, handlePrint, toPDF]);
 
   return (
     <div>

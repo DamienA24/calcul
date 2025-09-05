@@ -139,7 +139,7 @@ export default function TableHours() {
       toPDF();
     }
     setDocumentType(null);
-  }, [documentType]);
+  }, [documentType, handlePrint, toPDF]);
 
   return (
     <div>
