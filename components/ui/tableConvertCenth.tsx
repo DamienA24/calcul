@@ -129,7 +129,7 @@ export default function TableConvertCenth() {
       toPDF();
     }
     setDocumentType(null);
-  }, [documentType]);
+  }, [documentType, handlePrint, toPDF]);
 
   return (
     <div>
