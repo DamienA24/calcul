@@ -11,7 +11,6 @@ export default function ArrayConversion() {
   const printRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
 
-  // Utiliser l'utilitaire d'impression
   const handlePrint = () => {
     printImage(
       "/arrayConversion.svg",
@@ -27,8 +26,8 @@ export default function ArrayConversion() {
       const ctx = canvas.getContext("2d");
 
       // Calculate the scaling factor to fit the image within A4 dimensions
-      const a4Width = 210; // mm
-      const a4Height = 297; // mm
+      const a4Width = 210;
+      const a4Height = 297;
       const imgRatio = img.naturalWidth / img.naturalHeight;
       const a4Ratio = a4Width / a4Height;
 
@@ -41,8 +40,8 @@ export default function ArrayConversion() {
         finalWidth = a4Height * imgRatio;
       }
 
-      // Set canvas size (use a higher resolution for better quality)
-      const scale = 4; // Increase this for even higher resolution, if needed
+      // Set canvas size
+      const scale = 4; // Increase for higher resolution
       canvas.width = finalWidth * scale;
       canvas.height = finalHeight * scale;
 
@@ -55,7 +54,6 @@ export default function ArrayConversion() {
         format: "a4",
       });
 
-      // Center the image on the page
       const xOffset = (a4Width - finalWidth) / 2;
       const yOffset = (a4Height - finalHeight) / 2;
 

@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 export default function Navbar() {
   const [state, setState] = useState(false);
 
-  // Replace javascript:void(0) paths with your paths
   const navigation = [
     { title: "Calculette", path: "/calcul-heure" },
     { title: "Convertir heures", path: "/convertir-heures-en-centieme" },
