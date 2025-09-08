@@ -50,7 +50,7 @@ export default function SlotConvertHour({
 
   useEffect(() => {
     onUpdate(id, time, totalTime, checkedState);
-  }, [totalTime, checkedState]);
+  }, [totalTime, checkedState, id, onUpdate, time]);
 
   const handleTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);

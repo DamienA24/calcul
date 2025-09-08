@@ -65,7 +65,15 @@ export default function SlotTime({
 
   useEffect(() => {
     onUpdate(id, startTime, endTime, totalTime, totalTimeCenth, checkedState);
-  }, [totalTime, checkedState]);
+  }, [
+    totalTime,
+    checkedState,
+    id,
+    onUpdate,
+    startTime,
+    endTime,
+    totalTimeCenth,
+  ]);
 
   const handleStartTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
