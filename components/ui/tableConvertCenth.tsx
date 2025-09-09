@@ -22,6 +22,7 @@ import SlotConvertCenth from "./slotConvertCenth";
 
 import { Time } from "@internationalized/date";
 import PrintableTableConvertCenth from "./printTableConvertCenth";
+import { isCenthSlotEmpty, shouldDisableTrashButton, shouldDisablePrintButtons, CenthSlotData } from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
@@ -134,6 +135,15 @@ export default function TableConvertCenth() {
     setDocumentType(type);
   };
 
+  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
+  const shouldDisableTrash = (): boolean => {
+    return shouldDisableTrashButton(slots, isCenthSlotEmpty);
+  };
+
+  const shouldDisablePrint = (): boolean => {
+    return shouldDisablePrintButtons(slots, isCenthSlotEmpty);
+  };
+
   useEffect(() => {
     if (documentType === "print") {
       handlePrint();
@@ -170,6 +180,7 @@ export default function TableConvertCenth() {
               onUpdate={updateSlot}
               onRemove={removeSlot}
               indexRow={index}
+              isDisabled={shouldDisableTrash()}
             />
           ))}
         </TableBody>
@@ -189,13 +200,13 @@ export default function TableConvertCenth() {
               {" "}
               <Printer
                 size={20}
-                className="cursor-pointer"
-                onClick={() => handleDocument("print")}
+                className={`cursor-pointer ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className="cursor-pointer ml-1"
-                onClick={() => handleDocument("pdf")}
+                className={`cursor-pointer ml-1 ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>

@@ -22,6 +22,7 @@ import SlotConvertHour from "./slotConvertHour";
 
 import { Time } from "@internationalized/date";
 import PrintableTableConvertHour from "./printTableConvertHour";
+import { isHourSlotEmpty, shouldDisableTrashButton, shouldDisablePrintButtons, HourSlotData } from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
@@ -127,6 +128,15 @@ export default function TableConvertHours() {
     setDocumentType(type);
   };
 
+  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
+  const shouldDisableTrash = (): boolean => {
+    return shouldDisableTrashButton(slots, isHourSlotEmpty);
+  };
+
+  const shouldDisablePrint = (): boolean => {
+    return shouldDisablePrintButtons(slots, isHourSlotEmpty);
+  };
+
   useEffect(() => {
     if (documentType === "print") {
       handlePrint();
@@ -163,6 +173,7 @@ export default function TableConvertHours() {
               onUpdate={updateSlot}
               onRemove={removeSlot}
               indexRow={index}
+              isDisabled={shouldDisableTrash()}
             />
           ))}
         </TableBody>
@@ -182,13 +193,13 @@ export default function TableConvertHours() {
               {" "}
               <Printer
                 size={20}
-                className="cursor-pointer"
-                onClick={() => handleDocument("print")}
+                className={`cursor-pointer ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className="cursor-pointer ml-1"
-                onClick={() => handleDocument("pdf")}
+                className={`cursor-pointer ml-1 ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>

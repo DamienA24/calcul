@@ -24,6 +24,7 @@ type SlotTimeProps = {
     label?: string
   ) => void;
   onRemove: (id: number) => void;
+  isDisabled?: boolean;
 };
 export default function SlotConvertHour({
   id,
@@ -34,6 +35,7 @@ export default function SlotConvertHour({
   checked: initialCheckedState,
   indexRow,
   label = `Ligne ${indexRow + 1}`,
+  isDisabled = false,
 }: SlotTimeProps) {
   const [time, setTime] = useState<Time>(initialStartTime);
   const [totalTime, setTotalTime] = useState(initialTotalTime);
@@ -102,12 +104,15 @@ export default function SlotConvertHour({
         <Checkbox
           checked={checkedState}
           onCheckedChange={handleCheckedChange}
+          disabled={isDisabled}
         />
         <Trash2
-          className="cursor-pointer ml-1 mb-[2px]"
+          className={`cursor-pointer ml-1 mb-[2px] ${
+            isDisabled ? "text-gray-300 cursor-not-allowed" : "text-[#fc3535]"
+          }`}
           size={20}
-          color="#fc3535"
-          onClick={() => onRemove(id)}
+          color={isDisabled ? "#d1d5db" : "#fc3535"}
+          onClick={() => !isDisabled && onRemove(id)}
         />
       </TableCell>
     </TableRow>
