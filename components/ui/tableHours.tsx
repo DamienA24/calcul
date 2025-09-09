@@ -87,11 +87,20 @@ export default function TableHours() {
     endTime: Time,
     totalTime: string,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => {
     const newSLots = slots.map((slot) =>
       slot.id === id
-        ? { ...slot, startTime, endTime, totalTime, totalTimeCenth, checked }
+        ? {
+            ...slot,
+            startTime,
+            endTime,
+            totalTime,
+            totalTimeCenth,
+            checked,
+            label: label || "",
+          }
         : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);

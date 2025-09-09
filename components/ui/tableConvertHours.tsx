@@ -28,6 +28,7 @@ type SlotData = {
   time: Time;
   totalTimeCenth: string;
   checked: boolean;
+  label: string;
 };
 
 export default function TableConvertHours() {
@@ -37,6 +38,7 @@ export default function TableConvertHours() {
       time: new Time(0, 0),
       totalTimeCenth: "00:00",
       checked: true,
+      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -64,6 +66,7 @@ export default function TableConvertHours() {
         time: new Time(0, 0),
         totalTimeCenth: "00:00",
         checked: true,
+        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -79,10 +82,13 @@ export default function TableConvertHours() {
     id: number,
     time: Time,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => {
     const newSLots = slots.map((slot) =>
-      slot.id === id ? { ...slot, time, totalTimeCenth, checked } : slot
+      slot.id === id
+        ? { ...slot, time, totalTimeCenth, checked, label: label || "" }
+        : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);
     setSlotsToPrint(slotsToPrint);

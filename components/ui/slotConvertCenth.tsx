@@ -13,11 +13,13 @@ type SlotTimeProps = {
   totalTime: string;
   checked: boolean;
   indexRow: number;
+  label?: string;
   onUpdate: (
     id: number,
     totalTimeCenth: string,
     totalTime: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => void;
   onRemove: (id: number) => void;
 };
@@ -30,15 +32,23 @@ export default function SlotConvertCenth({
   onRemove,
   checked: initialCheckedState,
   indexRow,
+  label = `Ligne ${indexRow + 1}`,
 }: SlotTimeProps) {
   const [totalTime, setTotalTime] = useState(initialTotalTime);
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
+  const [labelValue, setLabelValue] = useState(label);
 
   const handleCheckedChange = () => {
     const newCheckedState = !checkedState;
     setCheckedState(newCheckedState);
-    onUpdate(id, totalTimeCenth, totalTime, newCheckedState);
+    onUpdate(id, totalTimeCenth, totalTime, newCheckedState, labelValue);
+  };
+
+  const handleLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newLabel = e.target.value;
+    setLabelValue(newLabel);
+    onUpdate(id, totalTimeCenth, totalTime, checkedState, newLabel);
   };
 
   const calculateTotalTime = (totalTime: String) => {

@@ -15,11 +15,13 @@ type SlotTimeProps = {
   totalTime: string;
   checked: boolean;
   indexRow: number;
+  label?: string;
   onUpdate: (
     id: number,
     time: Time,
     totalTime: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => void;
   onRemove: (id: number) => void;
 };
@@ -31,10 +33,12 @@ export default function SlotConvertHour({
   onRemove,
   checked: initialCheckedState,
   indexRow,
+  label = `Ligne ${indexRow + 1}`,
 }: SlotTimeProps) {
   const [time, setTime] = useState<Time>(initialStartTime);
   const [totalTime, setTotalTime] = useState(initialTotalTime);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
+  const [labelValue, setLabelValue] = useState(label);
 
   useEffect(() => {
     setTime(initialStartTime);
@@ -57,7 +61,13 @@ export default function SlotConvertHour({
   const handleCheckedChange = () => {
     const newCheckedState = !checkedState;
     setCheckedState(newCheckedState);
-    onUpdate(id, time, totalTime, newCheckedState);
+    onUpdate(id, time, totalTime, newCheckedState, labelValue);
+  };
+
+  const handleLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newLabel = e.target.value;
+    setLabelValue(newLabel);
+    onUpdate(id, time, totalTime, checkedState, newLabel);
   };
 
   const calculateTotalTime = (start: Time) => {
@@ -70,15 +80,24 @@ export default function SlotConvertHour({
       .toFixed(0)
       .padStart(2, "0")}`;
     setTotalTime(totalTimesCenthFormatted);
-    onUpdate(id, start, totalTimesCenthFormatted, checkedState);
+    onUpdate(id, start, totalTimesCenthFormatted, checkedState, labelValue);
   };
 
   return (
     <TableRow>
+      <TableCell className="min-w-[100px]">
+        <input
+          type="text"
+          value={labelValue}
+          onChange={handleLabelChange}
+          className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+          placeholder="Entrez un label"
+        />
+      </TableCell>
       <TableCell>
         <Hour value={time} onChange={handleTimeChange} />
       </TableCell>
-      <TableCell>{totalTime}</TableCell>
+      <TableCell className="text-center">{totalTime}</TableCell>
       <TableCell className="flex items-center justify-center">
         <Checkbox
           checked={checkedState}
