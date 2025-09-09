@@ -138,13 +138,18 @@ export default function TableConvertHours() {
 
   return (
     <div>
-      <Table className="w-[375px] mx-auto">
+      <Table className="w-[490px] mx-auto">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[125px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[125px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[125px] text-center">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[90px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -163,15 +168,16 @@ export default function TableConvertHours() {
         </TableBody>
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
-            <TableCell colSpan={3}>
+            <TableCell colSpan={4}>
               <Button onClick={addSlot} className="h-[30px]">
                 Ajouter une ligne
               </Button>
             </TableCell>
           </TableRow>
           <TableRow>
+            <TableCell />
             <TableCell className="text-center">{totalTime}</TableCell>
-            <TableCell>{totalTimeCenth}</TableCell>
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
             <TableCell className="flex justify-center">
               {" "}
               <Printer

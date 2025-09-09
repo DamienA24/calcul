@@ -145,13 +145,18 @@ export default function TableConvertCenth() {
 
   return (
     <div>
-      <Table className="w-[375px] mx-auto">
+      <Table className="w-[490px] mx-auto">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[125px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[125px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[125px] text-center">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[90px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -177,8 +182,9 @@ export default function TableConvertCenth() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>{totalTimeCenth}</TableCell>
-            <TableCell>{totalTime}</TableCell>
+            <TableCell />
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
+            <TableCell className="text-center">{totalTime}</TableCell>
             <TableCell className="flex justify-center">
               {" "}
               <Printer
