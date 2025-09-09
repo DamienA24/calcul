@@ -63,33 +63,31 @@ export default function SlotTime({
     setCheckedState(initialCheckedState);
   }, [initialCheckedState]);
 
-  useEffect(() => {
-    onUpdate(id, startTime, endTime, totalTime, totalTimeCenth, checkedState);
-  }, [
-    totalTime,
-    checkedState,
-    id,
-    onUpdate,
-    startTime,
-    endTime,
-    totalTimeCenth,
-  ]);
-
   const handleStartTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setStartTime(newValue);
     calculateTotalTime(newValue, endTime);
+    onUpdate(id, newValue, endTime, totalTime, totalTimeCenth, checkedState);
   };
 
   const handleEndTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setEndTime(newValue);
-
     calculateTotalTime(startTime, newValue);
+    onUpdate(id, startTime, newValue, totalTime, totalTimeCenth, checkedState);
   };
 
   const handleCheckedChange = () => {
-    setCheckedState(!checkedState);
+    const newCheckedState = !checkedState;
+    setCheckedState(newCheckedState);
+    onUpdate(
+      id,
+      startTime,
+      endTime,
+      totalTime,
+      totalTimeCenth,
+      newCheckedState
+    );
   };
 
   const calculateTotalTime = (start: Time, end: Time) => {

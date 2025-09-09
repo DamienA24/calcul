@@ -48,10 +48,6 @@ export default function SlotConvertHour({
     setCheckedState(initialCheckedState);
   }, [initialCheckedState]);
 
-  useEffect(() => {
-    onUpdate(id, time, totalTime, checkedState);
-  }, [totalTime, checkedState, id, onUpdate, time]);
-
   const handleTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setTime(newValue);
@@ -59,7 +55,9 @@ export default function SlotConvertHour({
   };
 
   const handleCheckedChange = () => {
-    setCheckedState(!checkedState);
+    const newCheckedState = !checkedState;
+    setCheckedState(newCheckedState);
+    onUpdate(id, time, totalTime, newCheckedState);
   };
 
   const calculateTotalTime = (start: Time) => {
@@ -72,6 +70,7 @@ export default function SlotConvertHour({
       .toFixed(0)
       .padStart(2, "0")}`;
     setTotalTime(totalTimesCenthFormatted);
+    onUpdate(id, start, totalTimesCenthFormatted, checkedState);
   };
 
   return (
