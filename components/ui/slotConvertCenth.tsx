@@ -74,14 +74,23 @@ export default function SlotConvertCenth({
 
   return (
     <TableRow>
+      <TableCell className="min-w-[100px]">
+        <input
+          type="text"
+          value={labelValue}
+          onChange={handleLabelChange}
+          className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+          placeholder="Entrez un label"
+        />
+      </TableCell>
       <TableCell>
         <CentiTimeInput
           key={id}
           value={totalTimeCenth}
           onChange={(newValue) => handleInputChange(id, newValue)}
-        />{" "}
+        />
       </TableCell>
-      <TableCell>{totalTime}</TableCell>
+      <TableCell className="text-center">{totalTime}</TableCell>
       <TableCell className="flex items-center justify-center">
         <Checkbox
           checked={checkedState}

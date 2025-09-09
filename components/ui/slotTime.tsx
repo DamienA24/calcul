@@ -170,8 +170,8 @@ export default function SlotTime({
       <TableCell>
         <Hour value={endTime} onChange={handleEndTimeChange} />
       </TableCell>
-      <TableCell>{totalTime}</TableCell>
-      <TableCell>{totalTimeCenth}</TableCell>
+      <TableCell className="text-center">{totalTime}</TableCell>
+      <TableCell className="text-center">{totalTimeCenth}</TableCell>
       <TableCell className="flex items-center">
         <Checkbox
           checked={checkedState}
