@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -35,12 +35,10 @@ export default function SlotConvertCenth({
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
 
-  useEffect(() => {
-    onUpdate(id, totalTimeCenth, totalTime, checkedState);
-  }, [totalTimeCenth, checkedState, id, onUpdate, totalTime]);
-
   const handleCheckedChange = () => {
-    setCheckedState(!checkedState);
+    const newCheckedState = !checkedState;
+    setCheckedState(newCheckedState);
+    onUpdate(id, totalTimeCenth, totalTime, newCheckedState);
   };
 
   const calculateTotalTime = (totalTime: String) => {
@@ -55,6 +53,7 @@ export default function SlotConvertCenth({
       .padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
 
     setTotalTime(totalTimesCenthFormatted);
+    onUpdate(id, totalTimeCenth, totalTimesCenthFormatted, checkedState);
   };
 
   const handleInputChange = (id: number, newValue: string) => {
