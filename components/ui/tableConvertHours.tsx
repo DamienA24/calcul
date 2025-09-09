@@ -28,6 +28,7 @@ type SlotData = {
   time: Time;
   totalTimeCenth: string;
   checked: boolean;
+  label: string;
 };
 
 export default function TableConvertHours() {
@@ -37,6 +38,7 @@ export default function TableConvertHours() {
       time: new Time(0, 0),
       totalTimeCenth: "00:00",
       checked: true,
+      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -64,6 +66,7 @@ export default function TableConvertHours() {
         time: new Time(0, 0),
         totalTimeCenth: "00:00",
         checked: true,
+        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -79,10 +82,13 @@ export default function TableConvertHours() {
     id: number,
     time: Time,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => {
     const newSLots = slots.map((slot) =>
-      slot.id === id ? { ...slot, time, totalTimeCenth, checked } : slot
+      slot.id === id
+        ? { ...slot, time, totalTimeCenth, checked, label: label || "" }
+        : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);
     setSlotsToPrint(slotsToPrint);
@@ -132,13 +138,18 @@ export default function TableConvertHours() {
 
   return (
     <div>
-      <Table className="w-[375px] mx-auto">
+      <Table className="w-[490px] mx-auto">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[125px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[125px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[125px] text-center">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[90px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -157,15 +168,16 @@ export default function TableConvertHours() {
         </TableBody>
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
-            <TableCell colSpan={3}>
+            <TableCell colSpan={4}>
               <Button onClick={addSlot} className="h-[30px]">
                 Ajouter une ligne
               </Button>
             </TableCell>
           </TableRow>
           <TableRow>
+            <TableCell />
             <TableCell className="text-center">{totalTime}</TableCell>
-            <TableCell>{totalTimeCenth}</TableCell>
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
             <TableCell className="flex justify-center">
               {" "}
               <Printer

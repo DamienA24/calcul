@@ -30,6 +30,7 @@ type SlotData = {
   totalTime: string;
   totalTimeCenth: string;
   checked: boolean;
+  label: string;
 };
 
 export default function TableHours() {
@@ -41,6 +42,7 @@ export default function TableHours() {
       totalTime: "00:00",
       totalTimeCenth: "00.00",
       checked: true,
+      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -71,6 +73,7 @@ export default function TableHours() {
         totalTime: "00:00",
         totalTimeCenth: "0.00",
         checked: true,
+        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -87,11 +90,20 @@ export default function TableHours() {
     endTime: Time,
     totalTime: string,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => {
     const newSLots = slots.map((slot) =>
       slot.id === id
-        ? { ...slot, startTime, endTime, totalTime, totalTimeCenth, checked }
+        ? {
+            ...slot,
+            startTime,
+            endTime,
+            totalTime,
+            totalTimeCenth,
+            checked,
+            label: label || "",
+          }
         : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);
@@ -143,15 +155,20 @@ export default function TableHours() {
 
   return (
     <div>
-      <Table className=" w-[375px] mx-auto	">
+      <Table className=" w-[550px] mx-auto	">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[75px]">Heure début</TableHead>
-            <TableHead className="w-[75px]">Heure fin</TableHead>
-            <TableHead className="w-[75px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[75px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[75px]">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[90px] text-center">Heure début</TableHead>
+            <TableHead className="w-[90px] text-center">Heure fin</TableHead>
+            <TableHead className="w-[90px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[90px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[90px]">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -177,11 +194,10 @@ export default function TableHours() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={2}>Total</TableCell>
-            <TableCell>{totalTime}</TableCell>
-            <TableCell>{totalTimeCenth}</TableCell>
+            <TableCell colSpan={3}>Total</TableCell>
+            <TableCell className="text-center">{totalTime}</TableCell>
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
             <TableCell className="flex">
-              {" "}
               <Printer
                 size={20}
                 className="cursor-pointer"
