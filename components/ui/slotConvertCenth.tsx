@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
-import { TimeValue } from "react-aria-components";
-import { Time } from "@internationalized/date";
 import { Trash2 } from "lucide-react";
 
 import CentiTimeInput from "./centiTimeInput";
@@ -24,10 +22,6 @@ type SlotTimeProps = {
   onRemove: (id: number) => void;
 };
 
-interface TimeEntry {
-  id: number;
-  value: string;
-}
 export default function SlotConvertCenth({
   id,
   totalTimeCenth: initialTotalTimeCenth,
@@ -41,27 +35,9 @@ export default function SlotConvertCenth({
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
 
-  /*   useEffect(() => {
-    setTime(initialStartTime);
-  }, [initialStartTime]); */
-
-  /* useEffect(() => {
-    setTotalTime(initialTotalTime);
-  }, [initialTotalTime]);
-
-  useEffect(() => {
-    setCheckedState(initialCheckedState);
-  }, [initialCheckedState]); */
-
   useEffect(() => {
     onUpdate(id, totalTimeCenth, totalTime, checkedState);
-  }, [totalTimeCenth, checkedState]);
-
-  /* const handleTimeChange = (value: TimeValue) => {
-    const newValue = new Time(value.hour, value.minute);
-    setTime(newValue);
-    calculateTotalTime(newValue);
-  }; */
+  }, [totalTimeCenth, checkedState, id, onUpdate, totalTime]);
 
   const handleCheckedChange = () => {
     setCheckedState(!checkedState);
