@@ -26,6 +26,7 @@ type SlotTimeProps = {
     checked: boolean
   ) => void;
   onRemove: (id: number) => void;
+  isDisabled?: boolean;
 };
 export default function SlotTime({
   id,
@@ -37,6 +38,7 @@ export default function SlotTime({
   onRemove,
   checked: initialCheckedState,
   indexRow,
+  isDisabled = false,
 }: SlotTimeProps) {
   const [startTime, setStartTime] = useState<Time>(initialStartTime);
   const [endTime, setEndTime] = useState<Time>(initialEndTime);
@@ -132,12 +134,15 @@ export default function SlotTime({
         <Checkbox
           checked={checkedState}
           onCheckedChange={handleCheckedChange}
+          disabled={isDisabled}
         />
         <Trash2
-          className="cursor-pointer ml-1 mb-[2px]"
+          className={`cursor-pointer ml-1 mb-[2px] ${
+            isDisabled ? "text-gray-300 cursor-not-allowed" : "text-[#fc3535]"
+          }`}
           size={20}
-          color="#fc3535"
-          onClick={() => onRemove(id)}
+          color={isDisabled ? "#d1d5db" : "#fc3535"}
+          onClick={() => !isDisabled && onRemove(id)}
         />
       </TableCell>
     </TableRow>
