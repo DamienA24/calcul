@@ -78,6 +78,7 @@ export default function TableHours() {
   const removeSlot = (id: number) => {
     const newSlot = slots.filter((slot) => slot.id !== id);
     setSlots(newSlot);
+    setSlotsToPrint(newSlot);
     calculateTotalTime(newSlot);
   };
 
