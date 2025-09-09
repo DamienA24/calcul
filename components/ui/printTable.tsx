@@ -17,6 +17,7 @@ type SlotData = {
   totalTime: string;
   totalTimeCenth: string;
   checked: boolean;
+  label?: string;
 };
 
 interface PrintableTableProps {
@@ -35,21 +36,27 @@ const PrintableTable = forwardRef<HTMLDivElement, PrintableTableProps>(
           </TableCaption>
           <TableHeader>
             <TableRow>
-              <TableCell className="w-[125px] text-center">
+              <TableCell className="w-[100px] text-center">
+                Label
+              </TableCell>
+              <TableCell className="w-[100px] text-center">
                 Heure début
               </TableCell>
-              <TableCell className="w-[125px] text-center">Heure fin</TableCell>
-              <TableCell className="w-[125px] text-center">
+              <TableCell className="w-[100px] text-center">Heure fin</TableCell>
+              <TableCell className="w-[100px] text-center">
                 Heure en hh:mm
               </TableCell>
-              <TableCell className="w-[125px] text-center">
+              <TableCell className="w-[100px] text-center">
                 Heure en 1/100
               </TableCell>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {slotsData.map((slot) => (
+            {slotsData.map((slot, index) => (
               <TableRow key={slot.id}>
+                <TableCell className="text-center">
+                  {slot.label || `Ligne ${index + 1}`}
+                </TableCell>
                 <TableCell className="text-center">
                   {slot.startTime.toString()}
                 </TableCell>
@@ -62,9 +69,11 @@ const PrintableTable = forwardRef<HTMLDivElement, PrintableTableProps>(
                 </TableCell>
               </TableRow>
             ))}
+          
           </TableBody>
           <TableFooter>
             <TableRow className="bg-gray-200 font-bold">
+              <TableCell className="text-center">Total</TableCell>
               <TableCell className="text-center" colSpan={2}>
                 Heure Totale
               </TableCell>

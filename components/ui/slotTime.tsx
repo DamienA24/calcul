@@ -17,13 +17,15 @@ type SlotTimeProps = {
   totalTimeCenth: string;
   checked: boolean;
   indexRow: number;
+  label?: string;
   onUpdate: (
     id: number,
     startTime: Time,
     endTime: Time,
     totalTime: string,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => void;
   onRemove: (id: number) => void;
 };
@@ -37,12 +39,14 @@ export default function SlotTime({
   onRemove,
   checked: initialCheckedState,
   indexRow,
+  label = `Ligne ${indexRow + 1}`,
 }: SlotTimeProps) {
   const [startTime, setStartTime] = useState<Time>(initialStartTime);
   const [endTime, setEndTime] = useState<Time>(initialEndTime);
   const [totalTime, setTotalTime] = useState(initialTotalTime);
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
+  const [labelValue, setLabelValue] = useState(label);
   useEffect(() => {
     setStartTime(initialStartTime);
   }, [initialStartTime]);
@@ -67,14 +71,30 @@ export default function SlotTime({
     const newValue = new Time(value.hour, value.minute);
     setStartTime(newValue);
     calculateTotalTime(newValue, endTime);
-    onUpdate(id, newValue, endTime, totalTime, totalTimeCenth, checkedState);
+    onUpdate(
+      id,
+      newValue,
+      endTime,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      labelValue
+    );
   };
 
   const handleEndTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setEndTime(newValue);
     calculateTotalTime(startTime, newValue);
-    onUpdate(id, startTime, newValue, totalTime, totalTimeCenth, checkedState);
+    onUpdate(
+      id,
+      startTime,
+      newValue,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      labelValue
+    );
   };
 
   const handleCheckedChange = () => {
@@ -86,7 +106,22 @@ export default function SlotTime({
       endTime,
       totalTime,
       totalTimeCenth,
-      newCheckedState
+      newCheckedState,
+      labelValue
+    );
+  };
+
+  const handleLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newLabel = e.target.value;
+    setLabelValue(newLabel);
+    onUpdate(
+      id,
+      startTime,
+      endTime,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      newLabel
     );
   };
 
@@ -120,14 +155,23 @@ export default function SlotTime({
 
   return (
     <TableRow>
+      <TableCell className="min-w-[100px]">
+        <input
+          type="text"
+          value={labelValue}
+          onChange={handleLabelChange}
+          className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+          placeholder="Entrez un label"
+        />
+      </TableCell>
       <TableCell>
         <Hour value={startTime} onChange={handleStartTimeChange} />
       </TableCell>
       <TableCell>
         <Hour value={endTime} onChange={handleEndTimeChange} />
       </TableCell>
-      <TableCell>{totalTime}</TableCell>
-      <TableCell>{totalTimeCenth}</TableCell>
+      <TableCell className="text-center">{totalTime}</TableCell>
+      <TableCell className="text-center">{totalTimeCenth}</TableCell>
       <TableCell className="flex items-center">
         <Checkbox
           checked={checkedState}
