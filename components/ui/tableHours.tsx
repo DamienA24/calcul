@@ -22,6 +22,7 @@ import SlotTime from "./slotTime";
 
 import { Time } from "@internationalized/date";
 import PrintableTable from "./printTable";
+import { isTimeSlotEmpty, shouldDisableTrashButton, shouldDisablePrintButtons, TimeSlotData } from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
@@ -133,6 +134,15 @@ export default function TableHours() {
     setDocumentType(type);
   };
 
+  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
+  const shouldDisableTrash = (): boolean => {
+    return shouldDisableTrashButton(slots, isTimeSlotEmpty);
+  };
+
+  const shouldDisablePrint = (): boolean => {
+    return shouldDisablePrintButtons(slots, isTimeSlotEmpty);
+  };
+
   useEffect(() => {
     if (documentType === "print") {
       handlePrint();
@@ -168,6 +178,7 @@ export default function TableHours() {
               onUpdate={updateSlot}
               onRemove={removeSlot}
               indexRow={index}
+              isDisabled={shouldDisableTrash()}
             />
           ))}
         </TableBody>
@@ -185,13 +196,17 @@ export default function TableHours() {
               {" "}
               <Printer
                 size={20}
-                className="cursor-pointer"
-                onClick={() => handleDocument("print")}
+                className={`cursor-pointer ${
+                  shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""
+                }`}
+                onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className="cursor-pointer ml-1"
-                onClick={() => handleDocument("pdf")}
+                className={`cursor-pointer ml-1 ${
+                  shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""
+                }`}
+                onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>
