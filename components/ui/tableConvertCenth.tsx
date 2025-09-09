@@ -22,14 +22,18 @@ import SlotConvertCenth from "./slotConvertCenth";
 
 import { Time } from "@internationalized/date";
 import PrintableTableConvertCenth from "./printTableConvertCenth";
-import { isCenthSlotEmpty, shouldDisableTrashButton, shouldDisablePrintButtons, CenthSlotData } from "@/utils/slotUtils";
+import {
+  isCenthSlotEmpty,
+  shouldDisableTrashButton,
+  shouldDisablePrintButtons,
+  CenthSlotData,
+} from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
   totalTimeCenth: string;
   totalTime: string;
   checked: boolean;
-  label: string;
 };
 
 export default function TableConvertCenth() {
@@ -39,7 +43,6 @@ export default function TableConvertCenth() {
       totalTimeCenth: "00:00",
       totalTime: "00:00",
       checked: true,
-      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -67,7 +70,6 @@ export default function TableConvertCenth() {
         totalTime: "00:00",
         totalTimeCenth: "00:00",
         checked: true,
-        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -83,19 +85,10 @@ export default function TableConvertCenth() {
     id: number,
     totalTimeCenth: string,
     totalTime: string,
-    checked: boolean,
-    label?: string
+    checked: boolean
   ) => {
     const newSLots = slots.map((slot) =>
-      slot.id === id
-        ? {
-            ...slot,
-            totalTime,
-            totalTimeCenth,
-            checked,
-            label: label || slot.label,
-          }
-        : slot
+      slot.id === id ? { ...slot, totalTime, totalTimeCenth, checked } : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);
     setSlotsToPrint(slotsToPrint);
@@ -135,7 +128,6 @@ export default function TableConvertCenth() {
     setDocumentType(type);
   };
 
-  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
   const shouldDisableTrash = (): boolean => {
     return shouldDisableTrashButton(slots, isCenthSlotEmpty);
   };
@@ -200,12 +192,16 @@ export default function TableConvertCenth() {
               {" "}
               <Printer
                 size={20}
-                className={`cursor-pointer ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                className={`cursor-pointer ${
+                  shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""
+                }`}
                 onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className={`cursor-pointer ml-1 ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                className={`cursor-pointer ml-1 ${
+                  shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""
+                }`}
                 onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
