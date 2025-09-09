@@ -15,6 +15,7 @@ type SlotData = {
   time: Time;
   totalTimeCenth: string;
   checked: boolean;
+  label?: string;
 };
 
 interface PrintableTableProps {
@@ -35,17 +36,23 @@ const PrintableTableConvertHour = forwardRef<
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableCell className="w-[150px] text-center">
+            <TableCell className="w-[100px] text-center">
+              Label
+            </TableCell>
+            <TableCell className="w-[100px] text-center">
               Heure en hh:mm
             </TableCell>
-            <TableCell className="w-[150px] text-center">
+            <TableCell className="w-[100px] text-center">
               Heure en 1/100
             </TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {slotsData.map((slot) => (
+          {slotsData.map((slot, index) => (
             <TableRow key={slot.id}>
+              <TableCell className="text-center">
+                {slot.label || `Ligne ${index + 1}`}
+              </TableCell>
               <TableCell className="text-center">
                 {slot.time.toString()}
               </TableCell>
@@ -57,6 +64,7 @@ const PrintableTableConvertHour = forwardRef<
         </TableBody>
         <TableFooter>
           <TableRow className="bg-gray-200 font-bold">
+            <TableCell className="text-center">Total</TableCell>
             <TableCell className="text-center">{totalTime}</TableCell>
             <TableCell className="text-center">{totalTimeCenth}</TableCell>
           </TableRow>
