@@ -84,7 +84,7 @@ export default function SlotTime({
     );
   };
 
-  const handleEndTimeChange = (value: TimeValue) => {
+  /*  const handleEndTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setEndTime(newValue);
     calculateTotalTime(startTime, newValue);
@@ -97,6 +97,18 @@ export default function SlotTime({
       checkedState,
       labelValue
     );
+  }; */
+
+  /* const handleStartTimeChange = (value: Time) => {
+    setStartTime(value);
+    calculateTotalTime(value, endTime);
+    //onUpdate(id, value, endTime, totalTime, totalTimeCenth, checkedState);
+  }; */
+
+  const handleEndTimeChange = (value: Time) => {
+    setEndTime(value);
+    calculateTotalTime(startTime, value);
+    //onUpdate(id, startTime, value, totalTime, totalTimeCenth, checkedState);
   };
 
   const handleCheckedChange = () => {
@@ -153,6 +165,14 @@ export default function SlotTime({
       .toFixed(0)
       .padStart(2, "0")}`;
     setTotalTimeCenth(totalTimesCenthFormatted);
+    onUpdate(
+      id,
+      start,
+      end,
+      totalTimesFormatted,
+      totalTimesCenthFormatted,
+      checkedState
+    );
   };
 
   return (
