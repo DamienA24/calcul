@@ -22,6 +22,11 @@ import SlotTime from "./slotTime";
 
 import { Time } from "@internationalized/date";
 import PrintableTable from "./printTable";
+import {
+  isTimeSlotEmpty,
+  shouldDisableTrashButton,
+  shouldDisablePrintButtons,
+} from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
@@ -30,6 +35,7 @@ type SlotData = {
   totalTime: string;
   totalTimeCenth: string;
   checked: boolean;
+  label: string;
 };
 
 export default function TableHours() {
@@ -41,6 +47,7 @@ export default function TableHours() {
       totalTime: "00:00",
       totalTimeCenth: "00.00",
       checked: true,
+      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -71,6 +78,7 @@ export default function TableHours() {
         totalTime: "00:00",
         totalTimeCenth: "0.00",
         checked: true,
+        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -78,6 +86,7 @@ export default function TableHours() {
   const removeSlot = (id: number) => {
     const newSlot = slots.filter((slot) => slot.id !== id);
     setSlots(newSlot);
+    setSlotsToPrint(newSlot);
     calculateTotalTime(newSlot);
   };
 
@@ -132,6 +141,15 @@ export default function TableHours() {
     setDocumentType(type);
   };
 
+  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
+  const shouldDisableTrash = (): boolean => {
+    return shouldDisableTrashButton(slots, isTimeSlotEmpty);
+  };
+
+  const shouldDisablePrint = (): boolean => {
+    return shouldDisablePrintButtons(slots, isTimeSlotEmpty);
+  };
+
   useEffect(() => {
     if (documentType === "print") {
       handlePrint();
@@ -143,15 +161,20 @@ export default function TableHours() {
 
   return (
     <div>
-      <Table className=" w-[375px] mx-auto	">
+      <Table className=" w-[550px] mx-auto	">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[75px]">Heure début</TableHead>
-            <TableHead className="w-[75px]">Heure fin</TableHead>
-            <TableHead className="w-[75px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[75px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[75px]">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[90px] text-center">Heure début</TableHead>
+            <TableHead className="w-[90px] text-center">Heure fin</TableHead>
+            <TableHead className="w-[90px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[90px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[90px]">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -167,6 +190,7 @@ export default function TableHours() {
               onUpdate={updateSlot}
               onRemove={removeSlot}
               indexRow={index}
+              isDisabled={shouldDisableTrash()}
             />
           ))}
         </TableBody>
@@ -177,20 +201,28 @@ export default function TableHours() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={2}>Total</TableCell>
-            <TableCell>{totalTime}</TableCell>
-            <TableCell>{totalTimeCenth}</TableCell>
+            <TableCell colSpan={3}>Total</TableCell>
+            <TableCell className="text-center">{totalTime}</TableCell>
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
             <TableCell className="flex">
               {" "}
               <Printer
                 size={20}
-                className="cursor-pointer"
-                onClick={() => handleDocument("print")}
+                className={`${
+                  shouldDisablePrint()
+                    ? "text-gray-300 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
+                onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className="cursor-pointer ml-1"
-                onClick={() => handleDocument("pdf")}
+                className={`ml-1 ${
+                  shouldDisablePrint()
+                    ? "text-gray-300 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
+                onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>

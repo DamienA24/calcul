@@ -22,12 +22,14 @@ import SlotConvertHour from "./slotConvertHour";
 
 import { Time } from "@internationalized/date";
 import PrintableTableConvertHour from "./printTableConvertHour";
+import { isHourSlotEmpty, shouldDisableTrashButton, shouldDisablePrintButtons, HourSlotData } from "@/utils/slotUtils";
 
 type SlotData = {
   id: number;
   time: Time;
   totalTimeCenth: string;
   checked: boolean;
+  label: string;
 };
 
 export default function TableConvertHours() {
@@ -37,6 +39,7 @@ export default function TableConvertHours() {
       time: new Time(0, 0),
       totalTimeCenth: "00:00",
       checked: true,
+      label: "Ligne 1",
     },
   ]);
   const [slotsToPrint, setSlotsToPrint] = useState<SlotData[]>([]);
@@ -64,6 +67,7 @@ export default function TableConvertHours() {
         time: new Time(0, 0),
         totalTimeCenth: "00:00",
         checked: true,
+        label: `Ligne ${slots.length + 1}`,
       },
     ]);
   };
@@ -79,10 +83,13 @@ export default function TableConvertHours() {
     id: number,
     time: Time,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => {
     const newSLots = slots.map((slot) =>
-      slot.id === id ? { ...slot, time, totalTimeCenth, checked } : slot
+      slot.id === id
+        ? { ...slot, time, totalTimeCenth, checked, label: label || "" }
+        : slot
     );
     const slotsToPrint = newSLots.filter((slot) => slot.checked);
     setSlotsToPrint(slotsToPrint);
@@ -121,6 +128,15 @@ export default function TableConvertHours() {
     setDocumentType(type);
   };
 
+  // Utilisation des fonctions utilitaires pour vérifier si les boutons doivent être désactivés
+  const shouldDisableTrash = (): boolean => {
+    return shouldDisableTrashButton(slots, isHourSlotEmpty);
+  };
+
+  const shouldDisablePrint = (): boolean => {
+    return shouldDisablePrintButtons(slots, isHourSlotEmpty);
+  };
+
   useEffect(() => {
     if (documentType === "print") {
       handlePrint();
@@ -132,13 +148,18 @@ export default function TableConvertHours() {
 
   return (
     <div>
-      <Table className="w-[375px] mx-auto">
+      <Table className="w-[490px] mx-auto">
         <TableCaption>Vos heures de travail</TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[125px]">Heure en hh:mm</TableHead>
-            <TableHead className="w-[125px]">Heure en 1/100</TableHead>
-            <TableHead className="w-[125px] text-center">Action</TableHead>
+            <TableHead className="w-[100px]">Label</TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en hh:mm
+            </TableHead>
+            <TableHead className="w-[125px] text-center">
+              Heure en 1/100
+            </TableHead>
+            <TableHead className="w-[90px] text-center">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -152,31 +173,33 @@ export default function TableConvertHours() {
               onUpdate={updateSlot}
               onRemove={removeSlot}
               indexRow={index}
+              isDisabled={shouldDisableTrash()}
             />
           ))}
         </TableBody>
         <TableFooter>
           <TableRow className="bg-background hover:bg-background">
-            <TableCell colSpan={3}>
+            <TableCell colSpan={4}>
               <Button onClick={addSlot} className="h-[30px]">
                 Ajouter une ligne
               </Button>
             </TableCell>
           </TableRow>
           <TableRow>
+            <TableCell />
             <TableCell className="text-center">{totalTime}</TableCell>
-            <TableCell>{totalTimeCenth}</TableCell>
+            <TableCell className="text-center">{totalTimeCenth}</TableCell>
             <TableCell className="flex justify-center">
               {" "}
               <Printer
                 size={20}
-                className="cursor-pointer"
-                onClick={() => handleDocument("print")}
+                className={`cursor-pointer ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("print")}
               />
               <Download
                 size={20}
-                className="cursor-pointer ml-1"
-                onClick={() => handleDocument("pdf")}
+                className={`cursor-pointer ml-1 ${shouldDisablePrint() ? "text-gray-300 cursor-not-allowed" : ""}`}
+                onClick={() => !shouldDisablePrint() && handleDocument("pdf")}
               />
             </TableCell>
           </TableRow>
