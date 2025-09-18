@@ -17,15 +17,18 @@ type SlotTimeProps = {
   totalTimeCenth: string;
   checked: boolean;
   indexRow: number;
+  label?: string;
   onUpdate: (
     id: number,
     startTime: Time,
     endTime: Time,
     totalTime: string,
     totalTimeCenth: string,
-    checked: boolean
+    checked: boolean,
+    label?: string
   ) => void;
   onRemove: (id: number) => void;
+  isDisabled?: boolean;
 };
 export default function SlotTime({
   id,
@@ -37,12 +40,15 @@ export default function SlotTime({
   onRemove,
   checked: initialCheckedState,
   indexRow,
+  label = `Ligne ${indexRow + 1}`,
+  isDisabled = false,
 }: SlotTimeProps) {
   const [startTime, setStartTime] = useState<Time>(initialStartTime);
   const [endTime, setEndTime] = useState<Time>(initialEndTime);
   const [totalTime, setTotalTime] = useState(initialTotalTime);
   const [totalTimeCenth, setTotalTimeCenth] = useState(initialTotalTimeCenth);
   const [checkedState, setCheckedState] = useState(initialCheckedState);
+  const [labelValue, setLabelValue] = useState(label);
   useEffect(() => {
     setStartTime(initialStartTime);
   }, [initialStartTime]);
@@ -67,14 +73,42 @@ export default function SlotTime({
     const newValue = new Time(value.hour, value.minute);
     setStartTime(newValue);
     calculateTotalTime(newValue, endTime);
-    onUpdate(id, newValue, endTime, totalTime, totalTimeCenth, checkedState);
+    onUpdate(
+      id,
+      newValue,
+      endTime,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      labelValue
+    );
   };
 
-  const handleEndTimeChange = (value: TimeValue) => {
+  /*  const handleEndTimeChange = (value: TimeValue) => {
     const newValue = new Time(value.hour, value.minute);
     setEndTime(newValue);
     calculateTotalTime(startTime, newValue);
-    onUpdate(id, startTime, newValue, totalTime, totalTimeCenth, checkedState);
+    onUpdate(
+      id,
+      startTime,
+      newValue,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      labelValue
+    );
+  }; */
+
+  /* const handleStartTimeChange = (value: Time) => {
+    setStartTime(value);
+    calculateTotalTime(value, endTime);
+    //onUpdate(id, value, endTime, totalTime, totalTimeCenth, checkedState);
+  }; */
+
+  const handleEndTimeChange = (value: Time) => {
+    setEndTime(value);
+    calculateTotalTime(startTime, value);
+    //onUpdate(id, startTime, value, totalTime, totalTimeCenth, checkedState);
   };
 
   const handleCheckedChange = () => {
@@ -86,7 +120,22 @@ export default function SlotTime({
       endTime,
       totalTime,
       totalTimeCenth,
-      newCheckedState
+      newCheckedState,
+      labelValue
+    );
+  };
+
+  const handleLabelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newLabel = e.target.value;
+    setLabelValue(newLabel);
+    onUpdate(
+      id,
+      startTime,
+      endTime,
+      totalTime,
+      totalTimeCenth,
+      checkedState,
+      newLabel
     );
   };
 
@@ -116,28 +165,48 @@ export default function SlotTime({
       .toFixed(0)
       .padStart(2, "0")}`;
     setTotalTimeCenth(totalTimesCenthFormatted);
+    onUpdate(
+      id,
+      start,
+      end,
+      totalTimesFormatted,
+      totalTimesCenthFormatted,
+      checkedState
+    );
   };
 
   return (
     <TableRow>
+      <TableCell className="min-w-[100px]">
+        <input
+          type="text"
+          value={labelValue}
+          onChange={handleLabelChange}
+          className="w-full border border-gray-300 rounded px-2 py-1 text-sm"
+          placeholder="Entrez un label"
+        />
+      </TableCell>
       <TableCell>
         <Hour value={startTime} onChange={handleStartTimeChange} />
       </TableCell>
       <TableCell>
         <Hour value={endTime} onChange={handleEndTimeChange} />
       </TableCell>
-      <TableCell>{totalTime}</TableCell>
-      <TableCell>{totalTimeCenth}</TableCell>
+      <TableCell className="text-center">{totalTime}</TableCell>
+      <TableCell className="text-center">{totalTimeCenth}</TableCell>
       <TableCell className="flex items-center">
         <Checkbox
           checked={checkedState}
           onCheckedChange={handleCheckedChange}
+          disabled={isDisabled}
         />
         <Trash2
-          className="cursor-pointer ml-1 mb-[2px]"
+          className={`cursor-pointer ml-1 mb-[2px] ${
+            isDisabled ? "text-gray-300 cursor-not-allowed" : "text-[#fc3535]"
+          }`}
           size={20}
-          color="#fc3535"
-          onClick={() => onRemove(id)}
+          color={isDisabled ? "#d1d5db" : "#fc3535"}
+          onClick={() => !isDisabled && onRemove(id)}
         />
       </TableCell>
     </TableRow>
