@@ -69,7 +69,7 @@ export default function SlotConvertCenth({
           key={id}
           value={totalTimeCenth}
           onChange={(newValue) => handleInputChange(id, newValue)}
-        />{" "}
+        />
       </TableCell>
       <TableCell>{totalTime}</TableCell>
       <TableCell className="flex items-center justify-center">

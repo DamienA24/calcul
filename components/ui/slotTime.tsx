@@ -63,18 +63,16 @@ export default function SlotTime({
     setCheckedState(initialCheckedState);
   }, [initialCheckedState]);
 
-  const handleStartTimeChange = (value: TimeValue) => {
-    const newValue = new Time(value.hour, value.minute);
-    setStartTime(newValue);
-    calculateTotalTime(newValue, endTime);
-    onUpdate(id, newValue, endTime, totalTime, totalTimeCenth, checkedState);
+  const handleStartTimeChange = (value: Time) => {
+    setStartTime(value);
+    calculateTotalTime(value, endTime);
+    //onUpdate(id, value, endTime, totalTime, totalTimeCenth, checkedState);
   };
 
-  const handleEndTimeChange = (value: TimeValue) => {
-    const newValue = new Time(value.hour, value.minute);
-    setEndTime(newValue);
-    calculateTotalTime(startTime, newValue);
-    onUpdate(id, startTime, newValue, totalTime, totalTimeCenth, checkedState);
+  const handleEndTimeChange = (value: Time) => {
+    setEndTime(value);
+    calculateTotalTime(startTime, value);
+    //onUpdate(id, startTime, value, totalTime, totalTimeCenth, checkedState);
   };
 
   const handleCheckedChange = () => {
@@ -116,6 +114,14 @@ export default function SlotTime({
       .toFixed(0)
       .padStart(2, "0")}`;
     setTotalTimeCenth(totalTimesCenthFormatted);
+    onUpdate(
+      id,
+      start,
+      end,
+      totalTimesFormatted,
+      totalTimesCenthFormatted,
+      checkedState
+    );
   };
 
   return (

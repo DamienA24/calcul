@@ -48,10 +48,9 @@ export default function SlotConvertHour({
     setCheckedState(initialCheckedState);
   }, [initialCheckedState]);
 
-  const handleTimeChange = (value: TimeValue) => {
-    const newValue = new Time(value.hour, value.minute);
-    setTime(newValue);
-    calculateTotalTime(newValue);
+  const handleTimeChange = (value: Time) => {
+    setTime(value);
+    calculateTotalTime(value);
   };
 
   const handleCheckedChange = () => {
