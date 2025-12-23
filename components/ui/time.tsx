@@ -15,7 +15,7 @@ export default function Hour({
   value: TimeValue;
   onChange: (value: Time) => void;
 }) {
-  const handleChange = (value: TimeValue) => {
+  const handleChange = (value: TimeValue | null) => {
     console.log(value);
     if (!value) {
       return;
