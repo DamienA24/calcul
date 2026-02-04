@@ -5,11 +5,8 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 
 import StructuredData from "@/components/ui/structuredDataLayout";
-import BannerAdsFooter from "@/components/ui/bannerAdsFooter";
-import BannerAds from "@/components/ui/bannerAds";
 import Navbar from "@/components/ui/navbar";
 import Footer from "@/components/ui/footer";
-import { PostHogProvider } from "@/components/PostHogProvider";
 
 import "./globals.css";
 
@@ -32,32 +29,30 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-foreground font-sans antialiased",
-          fontSans.variable
+          fontSans.variable,
         )}
       >
-        <PostHogProvider>
-          <StructuredData />
-          {process.env.NODE_ENV === "production" && (
-            <>
-              <Script
-                src="https://cloud.umami.is/script.js"
-                data-website-id="b83292ea-9827-4916-8300-f25461199995"
-              />
-              <Script
-                async
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1608938195475222"
-                crossOrigin="anonymous"
-                strategy="afterInteractive"
-              />
-            </>
-          )}
-          <Navbar />
-          {/* <BannerAds /> */}
-          {children}
-          {/*           <BannerAdsFooter />
-           */}{" "}
-          <Footer />
-        </PostHogProvider>
+        <StructuredData />
+        {process.env.NODE_ENV === "production" && (
+          <>
+            <Script
+              src="https://cloud.umami.is/script.js"
+              data-website-id="b83292ea-9827-4916-8300-f25461199995"
+            />
+            <Script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1608938195475222"
+              crossOrigin="anonymous"
+              strategy="afterInteractive"
+            />
+          </>
+        )}
+        <Navbar />
+        {/* <BannerAds /> */}
+        {children}
+        {/*           <BannerAdsFooter />
+         */}{" "}
+        <Footer />
       </body>
     </html>
   );
