@@ -7,10 +7,10 @@ export default function Navbar() {
   const [state, setState] = useState(false);
 
   const navigation = [
-    { title: "Calculette", path: "/calcul-heure" },
-    { title: "Convertir heures", path: "/convertir-heures-en-centieme" },
-    { title: "Convertir centièmes", path: "/convertir-centiemes-en-heures" },
-    { title: "Tableau de conversion", path: "/heures-en-centiemes" },
+    { title: "Calculatrice d'heures", path: "/calcul-heure" },
+    { title: "Calcul horaire", path: "/calcul-horaire" },
+    { title: "Heures sup", path: "/calcul-heures-supplementaires" },
+    { title: "Conversions", path: "/convertir-heures-en-centieme" },
     { title: "Contact", path: "/contact" },
   ];
 
