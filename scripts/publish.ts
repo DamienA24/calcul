@@ -16,7 +16,9 @@
  *   pnpm publish:blog --list                 # liste les drafts
  *
  * Variables dans .env.local :
- *   BLOGGER_API_KEY=...
+ *   BLOGGER_CLIENT_ID=...
+ *   BLOGGER_CLIENT_SECRET=...
+ *   BLOGGER_REFRESH_TOKEN=...   (généré par pnpm auth:blogger)
  *   BLOGGER_BLOG_ID=...
  *   DEVTO_API_KEY=...
  */
@@ -24,6 +26,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { google } from "googleapis";
 
 const DRAFTS_DIR = path.resolve("blog/drafts");
 const PUBLISHED_DIR = path.resolve("blog/published");
@@ -57,7 +60,9 @@ function mdToHtml(md: string): string {
 }
 
 async function publishToBlogger(
-  apiKey: string,
+  clientId: string,
+  clientSecret: string,
+  refreshToken: string,
   blogId: string,
   title: string,
   content: string,
@@ -69,23 +74,20 @@ async function publishToBlogger(
     return "dry-run";
   }
 
-  const res = await fetch(
-    `https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts/?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        kind: "blogger#post",
-        title,
-        content: mdToHtml(content),
-        labels: tags,
-      }),
-    }
-  );
+  const oauth2 = new google.auth.OAuth2(clientId, clientSecret);
+  oauth2.setCredentials({ refresh_token: refreshToken });
 
-  if (!res.ok) throw new Error(`Blogger ${res.status}: ${await res.text()}`);
-  const data = (await res.json()) as { url: string };
-  return data.url;
+  const blogger = google.blogger({ version: "v3", auth: oauth2 });
+  const res = await blogger.posts.insert({
+    blogId,
+    requestBody: {
+      title,
+      content: mdToHtml(content),
+      labels: tags,
+    },
+  });
+
+  return res.data.url ?? "";
 }
 
 // ─── Dev.to ───────────────────────────────────────────────────────────────────
@@ -152,16 +154,16 @@ async function processFile(filePath: string, dryRun: boolean) {
   console.log(`   "${title}"`);
 
   if (publishTo.includes("blogger")) {
-    const apiKey = process.env.BLOGGER_API_KEY;
+    const clientId = process.env.BLOGGER_CLIENT_ID;
+    const clientSecret = process.env.BLOGGER_CLIENT_SECRET;
+    const refreshToken = process.env.BLOGGER_REFRESH_TOKEN;
     const blogId = process.env.BLOGGER_BLOG_ID;
-    if (!apiKey || !blogId) {
-      console.warn("  ⚠  BLOGGER_API_KEY / BLOGGER_BLOG_ID manquants dans .env.local");
+    if (!clientId || !clientSecret || !refreshToken || !blogId) {
+      console.warn("  ⚠  Variables Blogger manquantes. Lance d'abord : pnpm auth:blogger");
     } else {
-      const url = await publishToBlogger(apiKey, blogId, title, content, tags, dryRun);
+      const url = await publishToBlogger(clientId, clientSecret, refreshToken, blogId, title, content, tags, dryRun);
       console.log(`  ✅ Blogger: ${url}`);
-      if (!dryRun) {
-        console.log(`  💡 Medium: importez cet article sur https://medium.com/p/import`);
-      }
+      if (!dryRun) console.log(`  💡 Medium: importer sur medium.com/p/import`);
     }
   }
 

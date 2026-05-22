@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "auth:blogger": "tsx scripts/auth-blogger.ts",
     "publish:blog": "tsx scripts/publish.ts",
     "publish:blog:dry": "tsx scripts/publish.ts --dry-run",
     "publish:blog:list": "tsx scripts/publish.ts --list"
@@ -46,6 +47,7 @@
     "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
+    "googleapis": "^172.0.0",
     "gray-matter": "^4.0.3",
     "jsdom": "^29.1.1",
     "playwright": "^1.60.0",
