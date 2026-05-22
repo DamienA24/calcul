@@ -25,6 +25,7 @@
     "framer-motion": "^11.2.10",
     "jspdf": "^2.5.1",
     "lucide-react": "^0.390.0",
+    "medium-sdk": "^0.0.4",
     "next": "^16.1.1",
     "posthog-js": "^1.236.2",
     "posthog-node": "^4.12.0",
