@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Reviews from "./reviews";
 
 export default function Hero() {
   return (
@@ -45,7 +44,6 @@ export default function Hero() {
           }}
         ></div>
       </div>
-      <Reviews />
     </header>
   );
 }
