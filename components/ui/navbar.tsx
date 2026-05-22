@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [state, setState] = useState(false);
@@ -22,9 +23,9 @@ export default function Navbar() {
 
   const Brand = () => (
     <div className="flex items-center justify-between py-5 md:block">
-      <a href="/">
-        <img src="/logo.svg" width={120} height={50} alt="Float UI logo" />
-      </a>
+      <Link href="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded">
+        <img src="/logo.svg" width={120} height={50} alt="Calcul Heures Pro" />
+      </Link>
       <div className="md:hidden">
         <button
           className="menu-btn text-gray-400 hover:text-gray-300"
@@ -86,9 +87,9 @@ export default function Navbar() {
               {navigation.map((item, idx) => {
                 return (
                   <li key={idx} className="text-gray-300 hover:text-gray-400">
-                    <a href={item.path} className="block">
+                    <Link href={item.path} className="block py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 rounded">
                       {item.title}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
