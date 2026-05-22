@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import TableHours from "@/components/ui/tableHours";
+import TableHours from "@/components/ui/tableHoursNoSSR";
 import RelatedTools from "@/components/ui/relatedTools";
 
 export const metadata: Metadata = {

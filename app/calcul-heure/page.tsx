@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import TableHours from "@/components/ui/tableHours";
+import TableHours from "@/components/ui/tableHoursNoSSR";
 import RelatedTools from "@/components/ui/relatedTools";
 
 export const metadata: Metadata = {
@@ -153,6 +153,7 @@ export default function Calcul() {
                 alt="Aperçu du tutoriel vidéo"
                 width={1200}
                 height={1200}
+                loading="eager"
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">

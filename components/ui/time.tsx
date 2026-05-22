@@ -11,12 +11,13 @@ import { Time } from "@internationalized/date";
 export default function Hour({
   value,
   onChange,
+  label = "Heure",
 }: {
   value: TimeValue;
   onChange: (value: Time) => void;
+  label?: string;
 }) {
   const handleChange = (value: TimeValue | null) => {
-    console.log(value);
     if (!value) {
       return;
     }
@@ -27,6 +28,7 @@ export default function Hour({
   return (
     <div>
       <TimeField
+        aria-label={label}
         className="w-full"
         hourCycle={24}
         hideTimeZone={true}

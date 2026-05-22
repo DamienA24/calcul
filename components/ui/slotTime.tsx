@@ -187,10 +187,10 @@ export default function SlotTime({
         />
       </TableCell>
       <TableCell>
-        <Hour value={startTime} onChange={handleStartTimeChange} />
+        <Hour value={startTime} onChange={handleStartTimeChange} label="Heure de début" />
       </TableCell>
       <TableCell>
-        <Hour value={endTime} onChange={handleEndTimeChange} />
+        <Hour value={endTime} onChange={handleEndTimeChange} label="Heure de fin" />
       </TableCell>
       <TableCell className="text-center">{totalTime}</TableCell>
       <TableCell className="text-center">{totalTimeCenth}</TableCell>
