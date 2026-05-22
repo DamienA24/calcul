@@ -40,3 +40,7 @@ next-env.d.ts
 .env.local
 .gstack/
 .claude/
+
+# Blog drafts (contenu SEO, hors repo)
+/blog/drafts/
+/blog/published/
