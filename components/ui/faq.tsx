@@ -54,7 +54,7 @@ export default function Faq() {
       <div className="mt-14 gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
         {faqsList.map((item, idx) => (
           <div className="space-y-3 mt-5" key={idx}>
-            <h4 className="text-xl text-gray-700 font-medium">{item.q}</h4>
+            <h3 className="text-xl text-gray-700 font-medium">{item.q}</h3>
             <p className="text-gray-500">{item.a}</p>
             {item.l && (
               <Link href={item.l}>
