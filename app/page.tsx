@@ -5,16 +5,16 @@ import Faq from "@/components/ui/faq";
 import Hero from "@/components/ui/hero";
 
 export const metadata: Metadata = {
-  title: "Accueil | Calculatrice d'heures de travail",
+  title: "Calculatrice d'heures de travail gratuite | Calcul Heures Pro",
   description:
-    "Bienvenue sur notre application de calculatrice d'heures de travail. Simplifiez la gestion de vos heures de travail avec nos outils innovants et faciles à utiliser.",
+    "Calculez vos heures de travail, convertissez centièmes en heures et heures en centièmes. Outil gratuit en ligne, sans inscription, export PDF et impression.",
   applicationName: "Calcul heures pro",
   keywords: [
     "calculatrice d'heures de travail",
-    "gestion des heures",
-    "convertir les heures en centième",
-    "outil de calcul heures",
     "convertir centièmes en heures",
+    "convertir heures en centième",
+    "calcul heure travail gratuit",
+    "outil de calcul heures",
   ],
   creator: "Calcul heures pro Team",
   publisher: "Calcul heures pro",

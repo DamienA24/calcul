@@ -2,38 +2,38 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import TableHours from "@/components/ui/tableHours";
+import RelatedTools from "@/components/ui/relatedTools";
 
 export const metadata: Metadata = {
-  title:
-    "Calculatrice d'heures de travail en ligne gratuite | Calcul heures pro",
+  title: "Calcul Heure de Travail | Calculatrice Gratuite | Calcul Heures Pro",
   description:
-    "Utilisez notre calculatrice d'heures de travail pour calculer efficacement vos heures de travail quotidien. Ajoutez autant de lignes que nécessaire pour inclure toutes vos plages horaires.Imprimer, télécharger",
+    "Calculez vos heures de travail en ligne, gratuitement. Calculatrice horaire multi-créneaux avec conversion automatique en centièmes. Export PDF et impression inclus.",
   applicationName: "Calcul heures pro",
   keywords: [
-    "calculatrice heures travail",
-    "convertisseur heures centièmes",
+    "calcul heure",
+    "calcul heure de travail",
+    "calculatrice heure",
+    "calcul horaire",
+    "calculateur d'heures",
     "calcul temps de travail",
-    "outil gestion temps",
-    "calculateur heures pro",
-    "conversion heures minutes",
-    "calcul plages horaires",
-    "logiciel temps travail gratuit",
+    "calcul d'heure",
+    "calculer heure de travail",
   ],
   creator: "Calcul heures pro Team",
   publisher: "Calcul heures pro",
   openGraph: {
-    title: "Calculatrice d'heures de travail en ligne gratuite",
+    title: "Calcul Heure de Travail — Calculatrice Gratuite",
     description:
-      "Calculez vos heures de travail facilement avec notre calculatrice en ligne gratuite. Convertissez les heures en centièmes, gérez plusieurs plages horaires.",
+      "Calculatrice horaire multi-créneaux. Conversion automatique en centièmes, export PDF et impression. Gratuit, sans inscription.",
     type: "website",
     locale: "fr_FR",
     siteName: "Calcul heures pro",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculatrice d'heures de travail en ligne gratuite",
+    title: "Calcul Heure de Travail — Calculatrice Gratuite",
     description:
-      "Calculez vos heures de travail facilement avec notre calculatrice en ligne gratuite.",
+      "Calculatrice horaire en ligne. Conversion centièmes automatique, export PDF. Gratuit.",
   },
 };
 
@@ -45,11 +45,7 @@ function StructuredData() {
     applicationCategory: "BusinessApplication",
     url: "https://www.calcul-heures.com/calcul-heure",
     operatingSystem: "All",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "EUR",
-    },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
     featureList: [
       "Calcul des plages horaires",
       "Conversion en centièmes",
@@ -57,6 +53,53 @@ function StructuredData() {
       "Impression des calculs",
       "Gestion multi-créneaux",
     ],
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
+    mainEntity: {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Comment calculer ses heures de travail ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Entrez l'heure de début et l'heure de fin de chaque créneau dans la calculatrice. L'outil calcule automatiquement la durée en hh:mm et en centièmes. Pour plusieurs créneaux, cliquez sur 'Ajouter une ligne' : le total est mis à jour en temps réel.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Comment additionner des heures de travail ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ajoutez une ligne par créneau horaire. Chaque ligne calcule sa durée individuellement, et le total en bas du tableau additionne l'ensemble. Le résultat s'affiche en hh:mm et en format décimal (centièmes).",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Qu'est-ce que les centièmes d'heure ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Les centièmes d'heure (format décimal) expriment les minutes en fraction d'heure : 30 minutes = 0,50, 45 minutes = 0,75. Ce format est utilisé dans les logiciels de paie car il simplifie les additions et multiplications.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Comment imprimer ou télécharger le calcul d'heures ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Une fois vos créneaux saisis, cliquez sur l'icône d'impression (🖨️) pour imprimer directement, ou sur l'icône de téléchargement (📥) pour exporter en PDF.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Peut-on calculer le temps de travail sur plusieurs jours ?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Oui. Ajoutez une ligne par créneau ou par jour. Utilisez le champ Label pour nommer chaque ligne (Lundi, Mardi…). Le total général additionne toutes les lignes cochées.",
+          },
+        },
+      ],
+    },
   };
 
   return (
@@ -73,19 +116,22 @@ export default function Calcul() {
       <article className="w-full max-w-4xl">
         <header className="mb-10">
           <h1 className="text-2xl md:text-3xl font-bold text-center">
-            Calculatrice d&apos;heures de travail
+            Calcul heure de travail en ligne
           </h1>
-          <p className="mt-4 text-lg">
-            Utilisez notre calculatrice d&apos;heures de travail pour calculer
-            efficacement vos heures de travail quotidien. Ajoutez autant de
-            lignes que nécessaire pour inclure toutes vos plages horaires.
-          </p>
-          <p className="mt-4">
-            Le temps total en centièmes (heures, centièmes) est calculé en
-            convertissant les heures et minutes en centièmes, puis en les
-            arrondissant. Notez que le total en centièmes peut différer de la
-            somme des arrondis individuels des temps en centièmes.
-          </p>
+          <div className="space-y-3 mt-4 text-lg">
+            <p>
+              Calculez vos heures de travail en saisissant l&apos;heure de
+              début et l&apos;heure de fin de chaque créneau. La calculatrice
+              additionne automatiquement toutes les plages horaires et affiche
+              le total en <strong>hh:mm</strong> et en{" "}
+              <strong>centièmes</strong> (format décimal utilisé en paie).
+            </p>
+            <p>
+              Ajoutez autant de lignes que nécessaire — une par créneau ou par
+              jour — pour calculer votre temps de travail journalier ou
+              hebdomadaire. Imprimez ou téléchargez le résultat en PDF.
+            </p>
+          </div>
         </header>
 
         <section className="my-10" aria-label="Calculatrice">
@@ -157,6 +203,38 @@ export default function Calcul() {
             ))}
           </div>
         </section>
+        <section className="my-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+            Questions fréquentes
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: "Comment calculer ses heures de travail ?",
+                a: "Entrez l'heure de début et de fin de chaque créneau. La durée s'affiche en hh:mm et en centièmes. Pour plusieurs créneaux, cliquez sur « Ajouter une ligne » — le total se met à jour automatiquement.",
+              },
+              {
+                q: "Comment additionner des heures de travail ?",
+                a: "Ajoutez une ligne par créneau. Chaque ligne calcule sa durée, et le total en bas additionne tout. Le résultat s'affiche en hh:mm et en format décimal (centièmes).",
+              },
+              {
+                q: "Qu'est-ce que les centièmes d'heure ?",
+                a: "Les centièmes expriment les minutes en fraction d'heure : 30 min = 0,50 — 45 min = 0,75. Ce format est utilisé dans les logiciels de paie car il simplifie les multiplications pour calculer un salaire.",
+              },
+              {
+                q: "Comment calculer le temps de travail sur plusieurs jours ?",
+                a: "Ajoutez une ligne par jour et nommez chacune via le champ Label (Lundi, Mardi…). Le total général cumule toutes les lignes cochées pour obtenir le total de la semaine.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-gray-50 p-5 rounded-lg">
+                <h3 className="font-bold text-lg mb-2">{item.q}</h3>
+                <p className="text-gray-700">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <RelatedTools currentPath="/calcul-heure" />
       </article>
       <StructuredData />
     </main>

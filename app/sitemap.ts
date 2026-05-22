@@ -7,8 +7,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const mainPages = [
     "",
     "/calcul-heure",
-    "/convertir-heures-en-centieme",
+    "/calcul-horaire",
+    "/additionner-des-heures",
+    "/feuille-heures",
+    "/calcul-heures-supplementaires",
     "/convertir-centiemes-en-heures",
+    "/convertir-heures-en-centieme",
+    "/convertir-minutes-en-centiemes",
     "/heures-en-centiemes",
   ].map((path) => ({
     url: `${baseURL}${path}`,

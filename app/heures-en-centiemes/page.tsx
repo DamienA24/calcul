@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ArrayConversion from "@/components/ui/arrayConversion";
+import RelatedTools from "@/components/ui/relatedTools";
 
 export const metadata: Metadata = {
   title: "Tableau de conversion heures en centièmes | Calcul heures pro",
@@ -50,7 +51,7 @@ function StructuredData() {
       name: "Calcul heures pro Team",
     },
     datePublished: "2024-01-01",
-    dateModified: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     isAccessibleForFree: true,
     hasPart: {
       "@type": "Dataset",
@@ -123,6 +124,8 @@ export default function ConvertHours() {
             gestion de la paie.
           </p>
         </aside>
+
+        <RelatedTools currentPath="/heures-en-centiemes" />
       </article>
       <StructuredData />
     </main>

@@ -1,0 +1,26 @@
+# Disavow file — calcul-heures.com
+# Généré le 2026-05-22
+# À uploader dans Google Search Console :
+# https://search.google.com/search-console/disavow-links
+#
+# Critères d'inclusion :
+# - Domaines hébergés à Singapour/Moldavie sans rapport avec le FR
+# - Domaines partageant la même IP (PBN détecté par SEMrush)
+# - Anchor text contenant "seo agency", "whitehat traffic", "aged domains"
+# - Sites manifestement créés pour vendre/simuler des backlinks
+# - Blogs étrangers sans rapport avec le calcul horaire FR
+
+# === SPAM SEO / FAUX ANNUAIRES ===
+domain:blinks.monster
+domain:blinks.sbs
+domain:takes.sbs
+domain:factmags.com
+domain:goooogla.com
+domain:findinfo.in
+
+# === BLOGS SPAM (Vietnam, sans rapport) ===
+domain:manhwamorilike.blogspot.com
+domain:vaytinchapshinbank.blogspot.com
+
+# === RÉSEAUX SEO (anchor text "no 1 seo agency" / "whitehat traffic") ===
+domain:seoflox.com

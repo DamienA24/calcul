@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import TableConvertCenth from "@/components/ui/tableConvertCenth";
+import RelatedTools from "@/components/ui/relatedTools";
 
 export const metadata: Metadata = {
   title:
@@ -54,7 +55,7 @@ function StructuredData() {
     description:
       "Convertissez facilement vos centièmes en heures avec notre outil en ligne gratuit. Idéal pour la gestion du temps de travail.",
     datePublished: "2024-01-01",
-    dateModified: "2024-01-01",
+    dateModified: new Date().toISOString().split("T")[0],
     author: {
       "@type": "Organization",
       name: "Calcul heures pro Team",
@@ -219,9 +220,15 @@ export default function ConvertCenth() {
           <p className="text-center text-gray-700">
             Cet outil gratuit est maintenu et mis à jour régulièrement pour
             garantir des conversions précises. Pour toute question ou
-            suggestion, n&apos;hésitez pas à nous contacter.
+            suggestion, n&apos;hésitez pas à{" "}
+            <Link href="/contact" className="text-blue-600 hover:underline">
+              nous contacter
+            </Link>
+            .
           </p>
         </footer>
+
+        <RelatedTools currentPath="/convertir-centiemes-en-heures" />
       </article>
     </main>
   );

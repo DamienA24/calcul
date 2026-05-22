@@ -16,9 +16,9 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Accueil | Calculatrice d'heures de travail",
+  title: "Calculatrice d'heures de travail gratuite | Calcul Heures Pro",
   description:
-    "Bienvenue sur notre application de calculatrice d'heures de travail. Simplifiez la gestion de vos heures de travail avec nos outils innovants et faciles à utiliser.",
+    "Calculez vos heures de travail, convertissez centièmes en heures et heures en centièmes. Outil gratuit en ligne, sans inscription, export PDF et impression.",
 };
 
 export default function RootLayout({

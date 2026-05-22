@@ -1,33 +1,29 @@
 export default function Footer() {
   const footerNavs = [
     {
-      label: "Outils",
+      label: "Calculatrices",
       items: [
-        {
-          href: "/calcul-heure",
-          name: "Calculette heures de travail",
-        },
-        {
-          href: "/convertir-heures-en-centieme",
-          name: "Convertir heures en centième",
-        },
-        {
-          href: "convertir-centiemes-en-heures",
-          name: "Convertir centièmes en heures",
-        },
+        { href: "/calcul-heure", name: "Calculatrice d'heures" },
+        { href: "/calcul-horaire", name: "Calcul horaire + salaire" },
+        { href: "/additionner-des-heures", name: "Additionner des heures" },
+        { href: "/feuille-heures", name: "Feuille d'heures hebdomadaire" },
+        { href: "/calcul-heures-supplementaires", name: "Heures supplémentaires" },
       ],
     },
     {
-      label: "A propos",
+      label: "Conversions",
       items: [
-        {
-          href: "/contact",
-          name: "Contact",
-        },
-        {
-          href: "/sitemap.xml",
-          name: "Sitemap",
-        },
+        { href: "/convertir-heures-en-centieme", name: "Heures → centièmes" },
+        { href: "/convertir-centiemes-en-heures", name: "Centièmes → heures" },
+        { href: "/convertir-minutes-en-centiemes", name: "Minutes → centièmes" },
+        { href: "/heures-en-centiemes", name: "Tableau de conversion" },
+      ],
+    },
+    {
+      label: "À propos",
+      items: [
+        { href: "/contact", name: "Contact" },
+        { href: "/sitemap.xml", name: "Sitemap" },
       ],
     },
   ];
